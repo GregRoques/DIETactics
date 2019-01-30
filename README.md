@@ -1,5 +1,4 @@
-# MealSleuth
-
+# DIETactics
 ## Contents
     * Description
     * Features
