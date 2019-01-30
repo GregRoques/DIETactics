@@ -19,15 +19,22 @@ This project is a Node/Express-based application that allows users to create die
 * Node/Express
 * MySQL
 * Chart.js
+* Nutritionix API
 
 ## Challenges and Solutions
 * To be declared... 
 
 ## MVP
-* To be declared...
+* Create a Node/Express app that can track daily exercise and nutrition information
+* Requirements:
+    * User's login information is stored within a MySQL database
+    * User's profile information is also stored within a MySQL database
+    * Chart display for the user's progress towards their target weight
+    * Separate pages depending on log-in status (i.e. logged in vs. not logged in)
 
 ## Stretch Goals
 * Create section for administrative users (i.e. certified dieticians)
+* Provide detailed reports on progress measuring from starting weight to target weight
 
 ## Authors
 * Sean McQuaid
