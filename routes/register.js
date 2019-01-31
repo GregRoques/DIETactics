@@ -16,31 +16,27 @@ router.get('/',(req, res)=>{
     if(req.query.msg == 'register'){
         msg = 'This email adress is already registered.';
     }
-    res.render('register',{msg})
-})
+    res.render('register',{msg});
+});
 
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
-
     const hashedPass = bcrypt.hashSync(req.body.password);
-
-    const checkUserQuery = `SELECT * FROM users WHERE email = ?`;
+    const checkUserQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
     connection.query(checkUserQuery,[req.body.email],(error,results)=>{
         if(error){throw error;}
         if(results.length != 0){
-
             res.redirect('/register?msg=register');
         }else{
-
-            const insertUserQuery = `INSERT INTO users (name, email, hash)
-                VALUES
-            (?,?,?)`;
+            const insertUserQuery = `INSERT INTO loginInfo (userName, email, hash)
+            VALUES
+            (?,?,?);`;
             connection.query(insertUserQuery,[req.body.name, req.body.email, hashedPass],(error2, results2)=>{
-                if(error2){throw error2;}
+                if(error2){throw error2};
                 res.redirect('/?msg=regSuccess');
-            })
-        }
-    })
-})
+            });
+        };
+    });
+});
 
 module.exports = router;
