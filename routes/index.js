@@ -7,7 +7,7 @@ const config = require('../config');
 const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
   connection.connect();
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const request = require('request');
 
 const helmet = require('helmet');
