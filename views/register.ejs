@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DIETactics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
 </head>
 <body>
-    
+    <% include navbar.ejs %>
+    <div class="register-header">
+        <h1>Register</h1>
+        <h4>Please fill out the following registration form in order to sign up for your DIETactics account. Please be wary of capitalization and what not when it comes to your username and password.</h4>
+    </div>
+    <form class="register-form" method="post" action="registerProcess">
+        <label for="email">Email Address</label>
+        <input class="text-input" type="text" name="email" />
+        <label for="userName">Username</label>
+        <input class="text-input" type="text" name="userName" />
+        <label for="password">Password</label>
+        <span>(Minimum of 8 characters required.)</span>
+        <input class="text-input" type="text" name="password" />
+        <input class="btn-input" type="button" value="Register"/>
+    </form>
+    <% include footer.ejs %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
 </body>
 </html>
