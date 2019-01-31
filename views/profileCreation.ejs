@@ -1,38 +1,70 @@
-<form action="userProfileCreation" method="post">
-    <input type="text" name="firstName" placeholder="Enter your first name here!"/>
-    <input type="text" name="age" placeholder="Type in your age here">
-    <select name="sex">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
-    <select name="heightFeet">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-    </select>
-    <select name="heightInches">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-    </select>
-    <input type="text" name="startingWeight" placeholder="Enter your starting weight in pounds here"/>
-    <input type="text" name="targetWeight" placeholder="Enter your target weight in pounds here"/>
-    <button type="submit">Create Profile</button>
-</form> 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Profile–DIETactics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
+</head>
+<body>
+        <% include navbar.ejs %>
+        <div class="register-header">
+                <h1>Profile</h1>
+                <h4>Please complete the form below before getting started </h4>
+            </div>
+    <form action="userProfileCreation" method="post" class="register-form">
+        <label for="firstName">First Name</label>
+        <input type="text" class="text-input" name="firstName" placeholder="Enter your first name here!"/>
+        <label for="age">Age</label>
+        <input type="text" class="text-input" name="age" placeholder="Type in your age here">
+        <label for="sex">Sex</label>
+        <select class="button-input" name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <label for="height">Height</label>
+        <div class="height-input">
+            <select class="button-input" name="heightFeet">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+            <select class="button-input" name="heightInches">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+            </select>
+        </div>
+        <label for="startingWeight">Starting Weight</label>
+        <input type="text" class="text-input" name="startingWeight" placeholder="Enter your starting weight in pounds here"/>
+        <label for="targetWeight">Target Weight</label>
+        <input type="text" class="text-input" name="targetWeight" placeholder="Enter your target weight in pounds here"/>
+        <input class="btn-input" type="button" value="Create Profile"/>
+    </form> 
+    <% include footer.ejs %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
+</body>
+</html>
