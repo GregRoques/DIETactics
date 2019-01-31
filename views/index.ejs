@@ -12,23 +12,7 @@
     <link rel="stylesheet" href="/styles/responsive.css" />
 </head>
 <body>
-    <div class="navbar-mobile">
-        <div class="navbar-mobile-locked">
-            <span class="navbar-name">DIETactics</span>
-            <a href="#" class="nav-burger"><i class="fas fa-bars"></i></a>
-        </div>
-        <div class="navbar-mobile-links">
-            <a href="#">Log-In</a>
-            <a href="#">Register</a>
-        </div>
-    </div>
-    <div class="navbar-desktop">
-        <span class="navbar-name">DIETactics</span>
-        <div class="navbar-links">
-            <a href="#">Log-In</a>
-            <a href="#">Register</a>
-        </div>
-    </div>
+    <% include navbar.ejs %>
     <div class="video-box">
         <div class="video-container">
             <video autoplay muted loop width="100%" id="videoBG">
@@ -74,9 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-      <span>© 2019 Sean McQuaid, Greg Roques, & Michael Rubino</span>
-    </div>
+    <% include footer.ejs %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/scripts/scripts.js"></script>
 </body>
