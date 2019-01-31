@@ -221,6 +221,7 @@ body{
 }
 
 .landing-content p{
+    text-align:justify;
     text-indent:3rem;
     font-family:'Roboto',sans-serif;
     font-weight:300;
@@ -235,6 +236,19 @@ body{
     margin-bottom:0;
     padding-bottom:0;
     border-bottom:0;
+}
+
+.landing-content p.landing-login{
+    text-indent:0;
+    display:flex;
+    justify-content:center;
+}
+
+.landing-login a{
+    background-color:#020f07;
+    color:#fff;
+    padding:0.25rem 1rem;
+    border-radius:2px;
 }
 
 .footer{
