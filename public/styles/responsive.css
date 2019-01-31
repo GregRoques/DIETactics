@@ -13,6 +13,8 @@
     .landing-content p{
         text-indent:1.5rem;
         font-size:1.125rem !important;
+        padding-bottom:1rem;
+        margin-bottom:1rem;
     }
 }
 
@@ -22,7 +24,7 @@
 
 @media screen and (max-width:800px){
     .navbar-desktop{display:none;}
-    .navbar-mobile, .navbar-mobile-locked {display:flex;}
+    .navbar-mobile, .navbar-mobile-locked {display:flex;} 
     .landing-header h1{
         font-size:2.25rem;
     }
