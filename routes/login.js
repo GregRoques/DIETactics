@@ -6,11 +6,11 @@ var router = express.Router();
 const config = require('config');
 const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
-  connection.connect();
+connection.connect();
 const bcrpt = require('bcrypt-node.js');
 
 // Get Login
-app.get('/login', (req, res, next)=>{
+router.get('/login', (req, res, next)=>{
     let msg;
     if(req.query.msg == 'noUser'){
         msg = '<h2>This email is not registered in our system. Please try again or register!</h2>'
@@ -21,7 +21,7 @@ app.get('/login', (req, res, next)=>{
 });
 
 // Return Login
-app.post('/loginProcess',(req, res, next)=>{
+router.post('/loginProcess',(req, res, next)=>{
 
     const email =  req.body.email;
     const password = req.body.password;
