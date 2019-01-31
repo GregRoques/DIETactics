@@ -249,6 +249,15 @@ body{
     color:#fff;
     padding:0.25rem 1rem;
     border-radius:2px;
+    transition:0.3s ease-out all;
+    box-shadow: 1px 1px 6px #020f0720;
+}
+
+.landing-login a:hover{
+    background-color:#11d66a;
+    color:#020f07;
+    border-radius:6px;
+    box-shadow: 1px 1px 6px #020f0780;
 }
 
 .footer{
