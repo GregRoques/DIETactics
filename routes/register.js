@@ -3,15 +3,15 @@ var express = require('express');
 var router = express.Router();
 
 // middleware
-const config = require('config');
+const config = require('../config');
 const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
-  connection.connect();
-const bcrpt = require('bcrypt-node.js');
+connection.connect();
+const bcrypt = require('bcrypt-nodejs');
 
 
 // Get Registration
-app.get('/register',(req, res)=>{
+router.get('/',(req, res)=>{
     let msg;
     if(req.query.msg == 'register'){
         msg = 'This email adress is already registered.';
@@ -20,7 +20,7 @@ app.get('/register',(req, res)=>{
 })
 
 // Return Registration
-app.post('/registerProcess',(req, res, next)=>{
+router.post('/registerProcess',(req, res, next)=>{
 
     const hashedPass = bcrypt.hashSync(req.body.password);
 
