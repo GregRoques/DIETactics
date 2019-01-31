@@ -22,6 +22,7 @@ router.get('/',(req, res)=>{
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
     const hashedPass = bcrypt.hashSync(req.body.password);
+    console.log(hashedPass);
     const checkUserQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
     connection.query(checkUserQuery,[req.body.email],(error,results)=>{
         if(error){throw error;}
@@ -31,7 +32,7 @@ router.post('/registerProcess',(req, res, next)=>{
             const insertUserQuery = `INSERT INTO loginInfo (userName, email, hash)
             VALUES
             (?,?,?);`;
-            connection.query(insertUserQuery,[req.body.name, req.body.email, hashedPass],(error2, results2)=>{
+            connection.query(insertUserQuery,[req.body.userName, req.body.email, hashedPass],(error2, results2)=>{
                 if(error2){throw error2};
                 res.redirect('/?msg=regSuccess');
             });
