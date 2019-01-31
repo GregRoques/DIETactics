@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DIETactics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
+</head>
+<body>
+    <% include navbar.ejs %>
+    <div class="video-box">
+        <div class="video-container">
+            <video autoplay muted loop width="100%" id="videoBG">
+                <source src="images/fruitbowl.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-content">
+            <h1>DIETactics</h1>
+            <div class="video-buttons">
+                <button>Log-In</button>
+                <button>Register</button>
+            </div>
+        </div>
+    </div>
+    <div class="landing-container">
+        <div class="landing-box">
+            <div class="landing-header">   
+              <h1>What is DIETactics?</h1>
+            </div>
+            <div class="landing-content">
+                <p>DIETactics is an app designed to help you figure out the right strategy for proper weight loss. DIETactics allows you to track your current dietary practices, cataloging what you eat based on mealtimes (e.g. breakfast, lunch, etc.). It also uses your fitness and body statistics to determine what changes in your eating habits you should make as well as how many calories you should be consuming daily.</p>
+                <p>The DIETactics app is completely free to use too! There's no need for any costly monthly memberships or things like that. Just get yourself an account, log in and start planning your future towards the new you!</p>
+            </div>
+        </div>
+        <div class="landing-box">
+            <div class="landing-header">
+              <h1>Why DIETactics?</h1>
+            </div>
+            <div class="landing-content">
+                <p>Proper weight management is certainly no easy task. We all have had at least one moment in our life where we've felt maybe a bit too husky or too thin in some way. With DIETactics, we hope to make the process of managing your weight seem much less daunting and thus make your goals easier to achieve.</p>
+                <p>DIETactics allows for more ease of use compared to other dieting apps out there. Where other applications require you to figure out the exact calorie count for every food item you consume, DIETactics is able to calculate those calories for you. Just specify a quantity for each food item, and our app will do all the calculations.</p>
+            </div>
+        </div>
+        <div class="landing-box">
+            <div class="landing-header">
+              <h1>How Do I Join?</h1>
+            </div>
+            <div class="landing-content">
+                <p>All you have to do is sign up for an account. Type in all of the information requested by the app (e.g. height, current weight, target weight, etc.), and the app will start calculating the right tactics for your new diet.</p>
+                <p class="landing-login">
+                  <a href="#">Register Today</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <% include footer.ejs %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
+</body>
 </html>
