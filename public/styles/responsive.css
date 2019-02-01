@@ -51,11 +51,6 @@
     body{
         overflow-x:hidden;
     }
-    .footer{
-        position:absolute;
-        bottom:0;
-        width:100%;
-    }
 }
 
 @media screen and (max-width:1000px){

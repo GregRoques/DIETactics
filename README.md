@@ -39,13 +39,13 @@ This project is a Node/Express-based application that allows users to create die
 ## Authors
 * Sean McQuaid
     * Contributions:
-        * Project Management
+        * Project Management, Database Initialization
     * [GitHub Profile](https://github.com/seanmcquaid)
 * Greg Roques
     * Contributions:
-        * Wireframing
+        * Wireframing, Responsive Design
     * [GitHub Profile](https://github.com/GregRoques)
 * Michael Rubino
     * Contributions:
-        * Concept, Wireframing
+        * Concept, Wireframing, Responsive Design
     * [GitHub Profile](https://github.com/rubinoAM)

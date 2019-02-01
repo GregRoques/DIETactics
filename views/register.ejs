@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/responsive.css" />
+    <link rel="stylesheet" href="/styles/register_specific.css" />
 </head>
 <body>
     <% include navbar.ejs %>
@@ -20,8 +21,6 @@
     <form class="register-form" method="post" action="/register/registerProcess">
         <label for="email">Email Address</label>
         <input class="text-input" type="text" name="email" />
-        <label for="userName">Username</label>
-        <input class="text-input" type="text" name="userName" />
         <label for="password">Password</label>
         <span>(Minimum of 8 characters required.)</span>
         <input class="text-input" type="text" name="password" />
