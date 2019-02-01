@@ -13,22 +13,24 @@
     <link rel="stylesheet" href="/styles/register_specific.css" />
 </head>
 <body>
-    <% include navbar.ejs %>
-    <div class="register-header">
-        <h1>Register</h1>
-        <h4>Please fill out the following registration form in order to sign up for your DIETactics account. Please be wary of capitalization and what not when it comes to your username and password.</h4>
+    <div>
+        <% include navbar.ejs %>
+        <div class="register-header">
+            <h1>Register</h1>
+            <h4>Please fill out the following registration form in order to sign up for your DIETactics account. Please be wary of capitalization and what not when it comes to your username and password.</h4>
+        </div>
+        <div class="error-message">
+            <h2><%-msg%></h2>
+        </div>
+        <form class="register-form" method="post" action="/register/registerProcess">
+            <label for="email">Email Address</label>
+            <input class="text-input" type="text" name="email" />
+            <label for="password">Password</label>
+            <span>(Minimum of 8 characters required.)</span>
+            <input class="text-input" type="password" name="password" />
+            <input class="btn-input" type="submit"/>
+        </form>
     </div>
-    <div class="error-message">
-        <h2><%-msg%></h2>
-    </div>
-    <form class="register-form" method="post" action="/register/registerProcess">
-        <label for="email">Email Address</label>
-        <input class="text-input" type="text" name="email" />
-        <label for="password">Password</label>
-        <span>(Minimum of 8 characters required.)</span>
-        <input class="text-input" type="password" name="password" />
-        <input class="btn-input" type="submit"/>
-    </form>
     <% include footer.ejs %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/scripts/scripts.js"></script>
