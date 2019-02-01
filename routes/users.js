@@ -20,6 +20,12 @@ router.get('/', function(req, res, next) {
   }
 
   res.render("userHome", {});
+
+  res.render("dailyInput", {});
+});
+
+router.post("/dailyProgress", (req,res,next)=>{
+
   
 });
 

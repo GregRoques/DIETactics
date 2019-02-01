@@ -15,6 +15,8 @@ router.get('/',(req, res)=>{
     let msg;
     if(req.query.msg == 'register'){
         msg = 'This email address is already registered. Please try again!';
+    }else if(req.query.msg == 'password'){
+        msg = 'The password you entered is not long enough. Please enter a password this is 8 characters long or more.'
     }
     res.render('register',{msg});
 });
@@ -22,6 +24,7 @@ router.get('/',(req, res)=>{
 // Global Variables
 let hashPass;
 let email;
+const passwordRegex = new RegExp("^.{8,}$");
 
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
@@ -30,6 +33,8 @@ router.post('/registerProcess',(req, res, next)=>{
         if(error){throw error;}
         if(results.length != 0){
             res.redirect('/register?msg=register');
+        }else if(!passwordRegex.test(req.body.password)){
+            res.redirect('/register?msg=password');
         }else{
             email = req.body.email;
             hashPass = bcrypt.hashSync(req.body.password);
@@ -40,7 +45,8 @@ router.post('/registerProcess',(req, res, next)=>{
 
 
 router.get("/profileCreation", (req,res,next)=>{
-    res.render("profileCreation", {});
+    let msg;
+    res.render("profileCreation", {msg});
   })
   
 router.post("/userProfileCreation", (req,res,next)=>{

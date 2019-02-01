@@ -16,7 +16,7 @@
         padding-bottom:1rem;
         margin-bottom:1rem;
     }
-    .register-form, .login-form{
+    .register-form, .login-form, .error-box{
         width:auto;
     }
 }
