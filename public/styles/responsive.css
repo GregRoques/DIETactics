@@ -23,6 +23,9 @@
 
 @media screen and (max-width:700px){
     .video-content h1{font-size:5rem;}
+    .footer{
+        font-size:0.875rem;
+    }
 }
 
 @media screen and (max-width:800px){
@@ -45,12 +48,6 @@
 @media screen and (min-width:800px){
     .navbar-mobile{display:none;}
     .navbar-desktop{display:flex;}
-}
-
-@media screen and (min-width:982px){
-    body{
-        overflow-x:hidden;
-    }
 }
 
 @media screen and (max-width:1000px){

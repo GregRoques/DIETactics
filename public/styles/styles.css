@@ -25,7 +25,12 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    position: relative;
+    min-height:100vh;
 }
 ol, ul {
 	list-style: none;
@@ -47,6 +52,7 @@ a{text-decoration:none;}
 /*GENERAL*/
 body{
     background:#11d66a;
+    overflow-x:hidden;
 }
 
 ::selection{
@@ -270,6 +276,9 @@ body{
     font-weight:300;
     padding:1.25rem;
     text-align:center;
+    /*position: absolute;
+    top:100%;
+    width: 100%;*/
 }
 
 /* Registration Page */
