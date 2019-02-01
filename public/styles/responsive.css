@@ -30,8 +30,19 @@
         flex-direction:column;
         align-items:center;
     }
+    .left-nav{
+        width:80%;
+        font-size:1.25rem;
+        text-align:center;
+    }
     .center-container{
         margin:2rem 0;
+    }
+    .right-information{
+        width:90%;
+    }
+    .number-text{
+        font-size:2rem;
     }
 }
 
@@ -55,6 +66,12 @@
 @media screen and (min-width:800px){
     .navbar-mobile{display:none;}
     .navbar-desktop{display:flex;}
+}
+
+@media screen and (min-width:500px) and (max-width:900px){
+    .title-text{
+        width:auto;
+    }
 }
 
 @media screen and (min-width:500px) and (max-width:1000px){
