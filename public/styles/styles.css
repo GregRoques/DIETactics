@@ -325,14 +325,34 @@ body{
 }
 
 .register-form .text-input{
+    margin-top:.25rem;
     background:#11d66a;
     color:#020f07;
     border:0;
-    font-size:1.5rem;
+    width:20rem;
+    font-size: 1rem;
     padding:0.25rem;
     font-family:'Roboto',sans-serif;
     margin-bottom:1rem;
     transition:0.1s ease-out all;
+}
+
+.register-form .button-input{
+    margin-top:.25rem;
+    background:#11d66a;
+    color:#020f07;
+    border:0;
+
+    font-size: 1rem;
+    padding:0.25rem;
+    font-family:'Roboto',sans-serif;
+    margin-bottom:1rem;
+    transition:0.1s ease-out all;
+}
+
+::placeholder{
+    color:darkgreen;
+    opacity:1;
 }
 
 .register-form .text-input:hover{
@@ -353,4 +373,8 @@ body{
 .register-form .btn-input:hover{
     background:#11d66a;
     color:#020f07;
+}
+
+.height-input .button-input{
+    display:inline-block;
 }
