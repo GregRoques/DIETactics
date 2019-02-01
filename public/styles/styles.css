@@ -593,13 +593,17 @@ p.error-msg{
 }
 
 .center-container{
-    width:100%;
-    max-width:20rem;
+    width:50rem;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     padding:1rem;
+}
+
+.center-container h2{
+    text-align:center;
+    font-size:1.75rem;
 }
 
 .daily-progress-form{
@@ -610,22 +614,11 @@ p.error-msg{
     width:100%;
 }
 
-.center-container div{
-    margin:1rem;
-}
-
 .date{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-}
-
-.date label{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:0.5rem;
 }
 
 .meal{
@@ -636,7 +629,7 @@ p.error-msg{
     width:100%;
 }
 
-.meal label{
+.date label, .meal label{
     display:flex;
     justify-content:center;
     align-items:center;
