@@ -34,5 +34,3 @@ $(document).ready(()=>{
         }
     }
 }*/
-
-console.log($(window).width(),$(window).height());
