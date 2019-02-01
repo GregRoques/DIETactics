@@ -22,6 +22,7 @@ router.get('/',(req, res)=>{
 // Global Variables
 let hashPass;
 let email;
+const passwordRegex = new RegExp("^.{8,}$");
 
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
