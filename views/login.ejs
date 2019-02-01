@@ -18,7 +18,10 @@
         <h1>Log-In</h1>
         <h4>Please enter your log-in information in order to sign into your acccount. Please be wary of capitalization and what not when it comes to your username and password.</h4>
     </div>
-    <form class="login-form" method="post" action="/register/registerProcess">
+    <div class="error-message">
+        <h2><%-msg%></h2>
+    </div>
+    <form class="login-form" method="post" action="/login/loginProcess">
         <label for="email">Email Address</label>
         <input class="text-input" type="text" name="email" />
         <label for="password">Password</label>
