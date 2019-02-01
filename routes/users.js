@@ -7,18 +7,20 @@ const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
- 
+
   const sex = req.session.sex;
   const age = req.session.age;
-  const weight = req.session.weight;
+  const weight = req.session.startingWeight;
   const height = req.session.height;
-
-  let totalCal
-  if (sex == 'male'){
-    totalCal = 864 - 9.72 * age + 1 * (14.2 * weight + 503 * height)
-  }else{
-  totalCal =  387 - 7.31 * age + 1 * (10.9 * weight + 660.7 * height)
-  }
+ 
+  // let userCal
+  // if (sex == 'male'){
+  //   userCal = ((864 - (9.72 * age) + 1) * (14.2 * weight + 503 * height)) / 4.184;
+  // }else{
+  // userCal =  (387 - 7.31 * age + 1 * (10.9 * weight + 660.7 * height))/ 4.184
+  // }
+  // console.log('Console Placeholder')
+  // console.log(userCal)
 
   res.render("dailyInput", {});
 });
