@@ -75,6 +75,7 @@ router.post("/userProfileCreation", (req,res,next)=>{
         connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, email, hashPass],(error, results)=>{
             if(error){throw error};
     });
+    res.redirect('/login');
   });
 
 module.exports = router;
