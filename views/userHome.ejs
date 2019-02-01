@@ -13,37 +13,35 @@
 </head>
 <body>
     <% include navbar.ejs %>
-    <div class="container">
+    <div class="user-container">
         <div class="left-nav">
-            <div class="profile-link">Profile</div>
-            <div class="profile-link"></div>
-            <div class="profile-link"></div>
-            <div class="profile-link"></div>
-            <div class="profile-link"></div>
+            <div class="profile-link"><a class="left-nav-link" href="#">Profile</a></div>
+            <div class="daily-input-link"><a class="left-nav-link" href="#">Daily Input</a></div>
+            <div class="weekly-progress-link"><a class="left-nav-link" href="#">Weekly Progress</a></div>
+            <div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>
+            <div class="log-out-link"><a class="left-nav-link" href="#">Log Out</a></div>
         </div>
         <div class="center-container">
             <h2>What Did You Eat Today?</h2>
-            <div class="breakfast">
-                <div class="meal-name">Breakfast</div>
-                <div class="calorie-text">Calories: 0</div>
-            </div>
-            <div class="lunch">
-                <div class="meal-name">Lunch</div>
-                <div class="calorie-text">Calories: 0</div>
-            </div>
-            <div class="dinner">
-                <div class="meal-name">Dinner</div>
-                <div class="calorie-text">Calories: 0</div>
-            </div>
-            <div class="other">
-                <div class="meal-name">Other</div>
-                <div class="calorie-text">Calories: 0</div>
-            </div>
+            
         </div>
         <div class="right-information">
-
+            <div class="text-info">
+                <div class="title-text">Recommended Daily Calories to Maintain Weight</div>
+                <div class="number-text">2190</div>
+            </div>
+            <div class="text-info">
+                <div class="title-text">Number of Calories To Consume to Lose One Pound</div>
+                <div class="number-text">1690</div>
+            </div>
+            <div class="text-info">
+                <div class="title-text">Recommended Daily Calories to Mainta Weight</div>
+                <div class="number-text">2190</div>
+            </div>
         </div>
     </div>
     <% include footer.ejs %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
 </body>
 </html>
