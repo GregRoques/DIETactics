@@ -12,53 +12,63 @@
     <link rel="stylesheet" href="/styles/responsive.css" />
 </head>
 <body>
-    <% include navbar.ejs %>
-    <div class="user-container">
-        <div class="left-nav">
-            <div class="profile-link"><a class="left-nav-link" href="#">Profile</a></div>
-            <div class="daily-input-link"><a class="left-nav-link" href="#">Daily Input</a></div>
-            <div class="weekly-progress-link"><a class="left-nav-link" href="#">Weekly Progress</a></div>
-            <div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>
-            <div class="log-out-link"><a class="left-nav-link" href="#">Log Out</a></div>
+    <div>
+        <% include navbar.ejs %>
+        <div class="user-header">
+            <h1>Welcome, User!</h1>
+            <h4>Enter what you have eaten today below, and we'll get it all logged into the system for you!</h4>
         </div>
-        <div class="center-container">
-            <h2>What Did You Eat Today?</h2>
-            <form action="dailyProgress" method="post" class="daily-progress-form">
-                <div class="date">
-                    <label for="date">Date</label>
-                    <input type="date" name="date">
-                </div>
-                <div class="meal">
-                    <label for="breakfast">Breakfast</label>
-                    <input type="text" class="meal-input" name="breakfast" placeholder="Enter each food and total ammount consumed here">
-                </div>
-                <div class="meal">
-                    <label for="lunch">Lunch</label>
-                    <input type="text" class="meal-input" name="lunch" placeholder="Enter each food and total ammount consumed here">
-                </div>
-                <div class="meal">
-                    <label for="breakfast">Dinner</label>
-                    <input type="text" class="meal-input" name="dinner" placeholder="Enter each food and total ammount consumed here">
-                </div>
-                <div class="meal">
-                    <label for="breakfast">Other</label>
-                    <input type="text" class="meal-input" name="other" placeholder="Enter each food and total ammount consumed here">
-                </div>
-                <input class="submit-meal-button" type="submit" value="Submit Meals!">
-            </form>
-        </div>
-        <div class="right-information">
-            <div class="text-info">
-                <div class="title-text">Recommended Daily Calories to Maintain Weight</div>
-                <div class="number-text">2190</div>
+        <div class="user-container">
+            <div class="left-nav">
+                <div class="profile-link"><a class="left-nav-link" href="#">Profile</a></div>
+                <div class="daily-input-link"><a class="left-nav-link" href="#">Daily Input</a></div>
+                <div class="weekly-progress-link"><a class="left-nav-link" href="#">Weekly Progress</a></div>
+                <div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>
+                <div class="log-out-link"><a class="left-nav-link" href="#">Log Out</a></div>
             </div>
-            <div class="text-info">
-                <div class="title-text">Number of Calories To Consume to Lose One Pound</div>
-                <div class="number-text">1690</div>
+            <div class="center-container">
+                <h2>What Did You Eat Today?</h2>
+                <form action="dailyProgress" method="post" class="daily-progress-form">
+                    <div class="date">
+                        <label for="date">Date</label>
+                        <input type="date" name="date">
+                    </div>
+                    <div class="meal">
+                        <label for="breakfast">Daily Weight</label>
+                        <input type="text" class="meal-input" name="dailyWeight" placeholder="Enter your weight as of today.">
+                    </div>
+                    <div class="meal">
+                        <label for="breakfast">Breakfast</label>
+                        <input type="text" class="meal-input" name="breakfast" placeholder="Enter each food and total amount consumed here">
+                    </div>
+                    <div class="meal">
+                        <label for="lunch">Lunch</label>
+                        <input type="text" class="meal-input" name="lunch" placeholder="Enter each food and total amount consumed here">
+                    </div>
+                    <div class="meal">
+                        <label for="breakfast">Dinner</label>
+                        <input type="text" class="meal-input" name="dinner" placeholder="Enter each food and total amount consumed here">
+                    </div>
+                    <div class="meal">
+                        <label for="breakfast">Other</label>
+                        <input type="text" class="meal-input" name="other" placeholder="Enter each food and total amount consumed here">
+                    </div>
+                    <input class="submit-meal-button" type="submit" value="Submit Meals!">
+                </form>
             </div>
-            <div class="text-info">
-                <div class="title-text">Today's Total</div>
-                <div class="number-text">2190</div>
+            <div class="right-information">
+                <div class="text-info">
+                    <div class="title-text">Recommended Daily Calories to Maintain Weight</div>
+                    <div class="number-text">2190</div>
+                </div>
+                <div class="text-info">
+                    <div class="title-text">Number of Calories To Consume to Lose One Pound</div>
+                    <div class="number-text">1690</div>
+                </div>
+                <div class="text-info">
+                    <div class="title-text">Today's Total</div>
+                    <div class="number-text">2190</div>
+                </div>
             </div>
         </div>
     </div>
