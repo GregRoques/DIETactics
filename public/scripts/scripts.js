@@ -13,18 +13,18 @@ $(document).ready(()=>{
         let totalSpace = winWid - eWid;
         let halfSpace = totalSpace/2;
         $('.video-content').css('left', halfSpace);
-        footerAdjust();
+        //footerAdjust();
     });    
 
-    footerAdjust();
+    //footerAdjust();
 
     $('.nav-burger').click(()=>{
         $('.navbar-mobile-links').toggle();
     });
 });
 
-function footerAdjust(){
-    if(window.location.href.includes("register")){
+/*function footerAdjust(){
+    if(window.location.href.includes("register") || window.location.href.includes("login")){
         if($(window).height() > 852){
             $('.footer').css({
                 'position':'absolute',
@@ -33,4 +33,6 @@ function footerAdjust(){
             })
         }
     }
-}
+}*/
+
+console.log($(window).width(),$(window).height());

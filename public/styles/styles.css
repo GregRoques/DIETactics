@@ -25,7 +25,12 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    position: relative;
+    min-height:100vh;
 }
 ol, ul {
 	list-style: none;
@@ -47,6 +52,7 @@ a{text-decoration:none;}
 /*GENERAL*/
 body{
     background:#11d66a;
+    overflow-x:hidden;
 }
 
 ::selection{
@@ -270,6 +276,9 @@ body{
     font-weight:300;
     padding:1.25rem;
     text-align:center;
+    /*position: absolute;
+    top:100%;
+    width: 100%;*/
 }
 
 /* Registration Page */
@@ -503,3 +512,47 @@ body{
 }
 
 /* User Home Page */
+
+.user-container {
+    display: flex;
+    justify-content: space-between;
+    font-family:'Righteous',sans-serif;
+    margin: 6rem 2rem 0;
+}
+
+.left-nav, .center-container{
+    border: 2px solid black;
+    height: 100%;
+    background:#fff;
+    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+}
+
+.left-nav div{
+    margin: 0.5rem;
+}
+
+.left-nav-link {
+    color:#020f07;
+    transition:0.2s ease-out color;
+}
+
+.left-nav-link:hover {
+    color:#11d66aee;
+}
+
+.center-container {
+    padding: 1rem;
+}
+
+.center-container div{
+    margin: 0.5rem;
+}
+
+.right-information {
+    background-color: #FFFC00;
+    color: black;
+}
+
+.meal {
+    display: flex;
+}
