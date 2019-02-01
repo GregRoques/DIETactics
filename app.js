@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const config = require('./config');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require("./routes/login");
@@ -12,6 +13,17 @@ var registerRouter = require("./routes/register");
 var app = express();
 const helmet = require('helmet');
 app.use(helmet());
+
+// establish Session
+const expressSession = require('express-session');
+const sessionOptions = {
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: true,
+  // cookie: {secure: false }
+};
+app.use(expressSession(sessionOptions));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
