@@ -5,8 +5,8 @@ const request = require("request");
 
 
 /* GET users listing. */
-router.get('/user', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', function(req, res, next) {
+  res.render("userHome", {});
 });
 
 module.exports = router;
