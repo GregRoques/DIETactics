@@ -545,24 +545,57 @@ body{
     color:#11d66aee;
 }
 
-.center-container {
+.center-container{
+    width: 100%;
+    max-width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 1rem;
 }
 
+.daily-progress-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 .center-container div{
-    margin: 0.5rem;
+    margin: 1rem;
 }
 
 .meal {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.meal label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0.5rem;
+}
+
+.meal-input {
+    width: 90%;
+    max-width: 20rem;
+    padding: 0.5rem;
 }
 
 
 
 .right-information {
+    visibility:hidden;
     background-color: #FFFC00;
     color: black;
     padding: 1rem;
+    height: 100%;
 }
 
 
