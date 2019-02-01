@@ -12,40 +12,40 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+	display:block;
 }
 body {
-    line-height: 1;
+    line-height:1;
     display:flex;
     flex-direction:column;
-    justify-content: space-between;
-    position: relative;
+    justify-content:space-between;
+    position:relative;
     min-height:100vh;
 }
 ol, ul {
-	list-style: none;
+	list-style:none;
 }
 blockquote, q {
-	quotes: none;
+	quotes:none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+	content:'';
+	content:none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+	border-collapse:collapse;
+	border-spacing:0;
 }
 a{text-decoration:none;}
 
@@ -74,7 +74,7 @@ body{
     top:0;}
 
 .navbar-mobile-locked{
-    justify-content: space-between;
+    justify-content:space-between;
     background-color:rgba(1, 13, 6, 0.933);}
 
 .navbar-mobile-links{
@@ -120,7 +120,7 @@ body{
 }
 .navbar-links a{
     color:#fff;
-    font-family: 'Roboto', sans-serif;
+    font-family:'Roboto', sans-serif;
     font-weight:300;
     margin:0 1rem;
     transition:0.2s ease-out color;
@@ -149,9 +149,9 @@ body{
     overflow:hidden;
 }
 #videoBG{
-    box-sizing: border-box;
+    box-sizing:border-box;
     background-size:cover;
-    position: relative;
+    position:relative;
     top:0;
     left:0;
     filter:grayscale(40%);
@@ -168,7 +168,7 @@ body{
     color:#fff;
     font-family:'Righteous',cursive;
     font-size:7rem;
-    text-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 .video-buttons{
     position:relative;
@@ -185,13 +185,13 @@ body{
     padding:1rem 2rem;
     margin:0 0.25rem;
     transition:0.3s ease-out all;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.125);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.125);
 }
 .video-buttons button:hover{
     background-color:#11d66a;
     color:#020f07;
     border-radius:6px;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .landing-container{
@@ -223,7 +223,7 @@ body{
 .landing-content{
     margin:0 1.5rem;
     background:#fff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
     padding:3rem;
     box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
@@ -258,27 +258,24 @@ body{
     padding:0.25rem 1rem;
     border-radius:2px;
     transition:0.3s ease-out all;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.125);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.125);
 }
 
 .landing-login a:hover{
     background-color:#11d66a;
     color:#020f07;
     border-radius:6px;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .footer{
     background-color:rgba(0, 0, 0, 0.239);
-    background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.30) 100%);
+    background:linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.30) 100%);
     color:#fff;
     font-family:'Roboto',sans-serif;
     font-weight:300;
     padding:1.25rem;
     text-align:center;
-    /*position: absolute;
-    top:100%;
-    width: 100%;*/
 }
 
 .error-box{
@@ -288,9 +285,9 @@ body{
     flex-direction:column;
     align-items:center;
     background:#fff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
     padding:3rem;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .error-box h1{
@@ -320,7 +317,7 @@ p.error-msg{
 .register-header h1{
     font-size:6rem;
     font-family:'Righteous',sans-serif;
-    text-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .register-header h4{
@@ -329,7 +326,7 @@ p.error-msg{
     font-family:'Roboto',sans-serif;
     font-weight:500;
     font-size:1.5rem;
-    text-shadow: 1px 1px 1px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
     background-color:rgba(14, 161, 80, 0.75);
     padding:2rem 1.25rem;
 }
@@ -341,9 +338,9 @@ p.error-msg{
     flex-direction:column;
     align-items:center;
     background:#fff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
     padding:3rem;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .register-form label{
@@ -362,7 +359,7 @@ p.error-msg{
     color:#020f07;
     border:0;
     width:20rem;
-    font-size: 1rem;
+    font-size:1rem;
     padding:0.25rem;
     font-family:'Roboto',sans-serif;
     margin-bottom:1rem;
@@ -374,7 +371,7 @@ p.error-msg{
     background:#11d66a;
     color:#020f07;
     border:0;
-    font-size: 1rem;
+    font-size:1rem;
     padding:0.25rem;
     font-family:'Roboto',sans-serif;
     margin-bottom:1rem;
@@ -425,7 +422,7 @@ p.error-msg{
 .profile-header h1{
     font-size:6rem;
     font-family:'Righteous',sans-serif;
-    text-shadow: 2px 2px 8px rgba(2, 15, 7, 0.75);
+    text-shadow:2px 2px 8px rgba(2, 15, 7, 0.75);
 }
 
 .profile-header h4{
@@ -434,7 +431,7 @@ p.error-msg{
     font-family:'Roboto',sans-serif;
     font-weight:500;
     font-size:1.5rem;
-    text-shadow: 1px 1px 1px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
     background-color:rgba(14, 161, 80, 0.75);
     padding:2rem 1.25rem;
 }
@@ -454,7 +451,7 @@ p.error-msg{
 .login-header h1{
     font-size:6rem;
     font-family:'Righteous',sans-serif;
-    text-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .login-header h4{
@@ -463,7 +460,7 @@ p.error-msg{
     font-family:'Roboto',sans-serif;
     font-weight:500;
     font-size:1.5rem;
-    text-shadow: 1px 1px 1px rgba(2, 15, 7, 0.502);
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
     background-color:rgba(14, 161, 80, 0.75);
     padding:2rem 1.25rem;
 }
@@ -475,9 +472,9 @@ p.error-msg{
     flex-direction:column;
     align-items:center;
     background:#fff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
     padding:3rem;
-    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
 }
 
 .login-form label{
@@ -496,7 +493,7 @@ p.error-msg{
     color:#020f07;
     border:0;
     width:20rem;
-    font-size: 1rem;
+    font-size:1rem;
     padding:0.25rem;
     font-family:'Roboto',sans-serif;
     margin-bottom:1rem;
@@ -508,7 +505,7 @@ p.error-msg{
     background:#11d66a;
     color:#020f07;
     border:0;
-    font-size: 1rem;
+    font-size:1rem;
     padding:0.25rem;
     font-family:'Roboto',sans-serif;
     margin-bottom:1rem;
@@ -538,17 +535,17 @@ p.error-msg{
 /* User Home Page */
 
 .user-container {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
     font-family:'Righteous',sans-serif;
-    margin: 6rem 2rem 0;
+    margin:6rem 2rem 0;
 }
 
 .left-nav, .center-container{
-    border: 2px solid black;
-    height: 100%;
+    border:2px solid black;
+    height:100%;
     background:#fff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
 }
 
 .left-nav {
@@ -556,7 +553,7 @@ p.error-msg{
 }
 
 .left-nav div{
-    margin: 0.5rem;
+    margin:0.5rem;
 }
 
 
@@ -569,7 +566,7 @@ p.error-msg{
     color:#11d66aee;
 }
 
-.center-container{
+.center-container {
     width: 100%;
     max-width: 20rem;
     display: flex;
@@ -615,6 +612,12 @@ p.error-msg{
 
 
 .right-information {
+    background-color:#FFFC00;
+    color:black;
+}
+
+.meal {
+    display:flex;
     visibility:hidden;
     background-color: #FFFC00;
     color: black;
