@@ -588,6 +588,20 @@ p.error-msg{
     margin: 1rem;
 }
 
+.date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0.5rem;
+}
+
 .meal {
     display: flex;
     flex-direction: column;

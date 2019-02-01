@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
   res.render("dailyInput", {});
 });
 
+router.post("/dailyProgress", (req,res,next)=>{
+  
+});
+
 module.exports = router;
