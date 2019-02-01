@@ -527,9 +527,14 @@ body{
     background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
 }
 
+.left-nav {
+    padding: 1rem;
+}
+
 .left-nav div{
     margin: 0.5rem;
 }
+
 
 .left-nav-link {
     color:#020f07;
@@ -548,11 +553,31 @@ body{
     margin: 0.5rem;
 }
 
+.meal {
+    display: flex;
+}
+
+
+
 .right-information {
     background-color: #FFFC00;
     color: black;
+    padding: 1rem;
 }
 
-.meal {
-    display: flex;
+
+.submit-meal-button {
+    background:#020f07;
+    color:#fff;
+    padding:0.25rem 1rem;
+    border:0;
+    border-radius:2px;
+    font-family:'Roboto',sans-serif;
+    font-size:1.25rem;
+    transition:0.2s ease-out all;
+}
+
+.submit-meal-button:hover{
+    background:#11d66a;
+    color:#020f07;
 }
