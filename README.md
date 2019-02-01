@@ -22,7 +22,8 @@ This project is a Node/Express-based application that allows users to create die
 * Nutritionix API
 
 ## Challenges and Solutions
-* To be declared... 
+* Table Structure
+    * Initially we had decided upon having two tables to store information for single users: one for basic log-in information, and one for all of the statistics needed for the app. Upon further inspection, though, we realized that it would be more efficient and organized to consolidate all of that information into one single table. We then needed to reformat our initial queries to input registration information into the database and get said information for the profile creation process.
 
 ## MVP
 * Create a Node/Express app that can track daily exercise and nutrition information

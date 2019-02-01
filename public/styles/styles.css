@@ -148,7 +148,7 @@ body{
     position: relative;
     top:0;
     left:0;
-    filter:grayscale(80%);
+    filter:grayscale(40%);
 }
 .video-content{
     position:absolute;
