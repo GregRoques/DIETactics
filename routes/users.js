@@ -53,6 +53,10 @@ router.post("/dailyProgress", (req,res,next)=>{
   });
 });
 
+router.get("/weeklyProgress", (req,res,next)=>{
+  res.render("weeklyProgress", {});
+});
+
 module.exports = router;
 
 
