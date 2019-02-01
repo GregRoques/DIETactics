@@ -13,20 +13,21 @@ const bcrypt = require('bcrypt-nodejs');
 router.get('/login', (req, res, next)=>{
     let msg;
     if(req.query.msg == 'noUser'){
-        msg = '<h2>This email is not registered in our system. Please try again or register!</h2>'
+        msg = 'This email is not registered.'
     }else if(req.query.msg == 'badPass'){
-        msg = '<h2>This password is not associated with this email. Please enter again</h2>'
+        msg = 'Incorrect Password.'
     }
 	res.render('login',{msg});
 });
 
 // Return Login
 router.post('/loginProcess',(req, res, next)=>{
-
     const email =  req.body.email;
     const password = req.body.password;
 
-    const checkPasswordQuery = `SELECT * FROM users WHERE email = ?`;
+
+    const checkPasswordQuery = `SELECT * FROM userProfileInfo WHERE email = ?`;
+
     connection.query(checkPasswordQuery,[email],(error, results)=>{
         if(error){throw error;}
 
