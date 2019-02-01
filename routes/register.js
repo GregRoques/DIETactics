@@ -19,28 +19,20 @@ router.get('/',(req, res)=>{
     res.render('register',{msg});
 });
 
-let userId;
+// Global Variables
+let hashPass;
+let email;
+
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
-    const hashedPass = bcrypt.hashSync(req.body.password);
-    // console.log(hashedPass);
-    const checkUserQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
+    const checkUserQuery = `SELECT * FROM userProfileInfo WHERE email = ?;`;
     connection.query(checkUserQuery,[req.body.email],(error,results)=>{
         if(error){throw error;}
         if(results.length != 0){
             res.redirect('/register?msg=register');
         }else{
-            const insertUserQuery = `INSERT INTO loginInfo (userName, email, hash)
-            VALUES
-            (?,?,?);`;
-            connection.query(insertUserQuery,[req.body.userName, req.body.email, hashedPass],(error2, results2)=>{
-                if(error2){throw error2};
-            });
-            const userIdQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
-                connection.query(userIdQuery,[req.body.email],(error3,results3)=>{
-                    // console.log(results3[0]);
-                    userId = results3[0].id;
-            });
+            email = req.body.email;
+            hashPass = bcrypt.hashSync(req.body.password);
             res.redirect('/register/profileCreation');
         };
     });
@@ -51,7 +43,7 @@ router.get("/profileCreation", (req,res,next)=>{
     res.render("profileCreation", {});
   })
   
-  router.post("/userProfileCreation", (req,res,next)=>{
+router.post("/userProfileCreation", (req,res,next)=>{
     const firstName = req.body.firstName;
     const age = req.body.age;
     const sex = req.body.sex;
@@ -71,10 +63,10 @@ router.get("/profileCreation", (req,res,next)=>{
     const targetWeightKg = targetWeightLb * 0.453592;
     // console.log(targetWeightKg);
 
-    const insertUserQuery = `INSERT INTO userProfileInfo (firstName, sex, height, startingWeight, age, targetWeight, userId)
+    const insertUserQuery = `INSERT INTO userProfileInfo (firstName, sex, height, startingWeight, age, targetWeight, email, hash)
         VALUES
-        (?,?,?,?,?,?,?);`;
-        connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, userId],(error, results)=>{
+        (?,?,?,?,?,?,?,?);`;
+        connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, email, hashPass],(error, results)=>{
             if(error){throw error};
     });
   });
