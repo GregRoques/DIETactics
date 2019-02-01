@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt-nodejs');
 router.get('/',(req, res)=>{
     let msg;
     if(req.query.msg == 'register'){
-        msg = 'This email adress is already registered.';
+        msg = 'This email address is already registered.';
     }
     res.render('register',{msg});
 });
@@ -36,9 +36,9 @@ router.post('/registerProcess',(req, res, next)=>{
             connection.query(insertUserQuery,[req.body.userName, req.body.email, hashedPass],(error2, results2)=>{
                 if(error2){throw error2};
             });
-            const sessionQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
-                connection.query(sessionQuery,[req.body.email],(error3,results3)=>{
-                    console.log(results3[0]);
+            const userIdQuery = `SELECT * FROM loginInfo WHERE email = ?;`;
+                connection.query(userIdQuery,[req.body.email],(error3,results3)=>{
+                    // console.log(results3[0]);
                     userId = results3[0].id;
             });
             res.redirect('/register/profileCreation');
@@ -52,7 +52,6 @@ router.get("/profileCreation", (req,res,next)=>{
   })
   
   router.post("/userProfileCreation", (req,res,next)=>{
-    userId;
     const firstName = req.body.firstName;
     const age = req.body.age;
     const sex = req.body.sex;
