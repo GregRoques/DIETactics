@@ -47,6 +47,17 @@
     .navbar-desktop{display:flex;}
 }
 
+@media screen and (min-width:982px){
+    body{
+        overflow-x:hidden;
+    }
+    .footer{
+        position:absolute;
+        bottom:0;
+        width:100%;
+    }
+}
+
 @media screen and (max-width:1000px){
     .video-content{top:35%;}
 }

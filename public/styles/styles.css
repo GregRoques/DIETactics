@@ -264,7 +264,6 @@ body{
 
 .footer{
     bottom:0;
-    width:100vw;
     background-color:rgba(0, 0, 0, 0.239);
     background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.30) 100%);
     color:#fff;
@@ -305,7 +304,7 @@ body{
 
 .register-form{
     width:80%;
-    margin:3rem auto 0;
+    margin:3rem auto 3rem;
     display:flex;
     flex-direction:column;
     align-items:center;
