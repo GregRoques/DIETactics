@@ -13,9 +13,17 @@ $(document).ready(()=>{
         let totalSpace = winWid - eWid;
         let halfSpace = totalSpace/2;
         $('.video-content').css('left', halfSpace);
+
+        $('.footer').css('bottom',0);
     });
 
     $('.nav-burger').click(()=>{
         $('.navbar-mobile-links').toggle();
     });
+
+    // if($('body').height() <  $(window).height()){
+    //     $('.footer').css('position','absolute');
+    //     $('body').css('overflow-x','hidden');
+    //     $('.footer').css('width','100%');
+    // }
 });
