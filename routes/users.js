@@ -3,6 +3,10 @@ var router = express.Router();
 const config = require('../config');
 const request = require("request");
 
+const mysql = require('mysql');
+const connection = mysql.createConnection(config.db);
+connection.connect();
+
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
 /* GET users listing. */
@@ -31,6 +35,8 @@ router.post("/dailyProgress", (req,res,next)=>{
   const lunch = req.body.lunch;
   const dinner = req.body.dinner;
   const other = req.body.other;
+  const id = req.session.uid;
+  const dailyWeight = req.body.dailyWeight;
 
   const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
   const headers = {
@@ -50,8 +56,14 @@ router.post("/dailyProgress", (req,res,next)=>{
     for(let i = 0; i < foodArray.length; i++){
       totalCalories += foodArray[i].nf_calories;
       console.log(foodArray[i].food_name, foodArray[i].nf_calories)
+      
     }
-    console.log(totalCalories);
+    const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userID)
+        VALUES
+        (?,?,?,?);`;
+        connection.query(insertUserQuery,[dailyWeight,date,totalCalories,id],(error, results)=>{
+            if(error){throw error};
+    });
   });
 });
 
