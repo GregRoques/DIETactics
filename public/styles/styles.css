@@ -281,6 +281,30 @@ body{
     width: 100%;*/
 }
 
+.error-box{
+    width:80%;
+    margin:3rem auto 3rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:#fff;
+    background: linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    padding:3rem;
+    box-shadow: 1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.error-box h1{
+    font-family:'Righteous',sans-serif;
+    font-size:4rem;
+}
+
+p.error-msg{
+    margin-top:0.5rem;
+    font-family:'Roboto',sans-serif;
+    font-size:1.25rem;
+    text-align:center;
+}
+
 /* Registration Page */
 .register-header{
     background:url('/images/reg_bg.jpg');
