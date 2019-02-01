@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const config = require('../config');
 const request = require("request");
-const config = require("../config");
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
@@ -20,10 +19,6 @@ router.get('/', function(req, res, next) {
   }else{
   totalCal =  387 - 7.31 * age + 1 * (10.9 * weight + 660.7 * height)
   }
-
-  console.log(totalCal)
-
-  res.render("userHome", {});
 
   res.render("dailyInput", {});
 });
