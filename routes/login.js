@@ -22,10 +22,8 @@ router.get('/login', (req, res, next)=>{
 
 // Return Login
 router.post('/loginProcess',(req, res, next)=>{
-
     const email =  req.body.email;
     const password = req.body.password;
-
     const checkPasswordQuery = `SELECT * FROM users WHERE email = ?`;
     connection.query(checkPasswordQuery,[email],(error, results)=>{
         if(error){throw error;}

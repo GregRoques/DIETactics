@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt-nodejs');
 router.get('/',(req, res)=>{
     let msg;
     if(req.query.msg == 'register'){
-        msg = 'This email address is already registered.';
+        msg = 'This email address is already registered. Please try again!';
     }
     res.render('register',{msg});
 });
