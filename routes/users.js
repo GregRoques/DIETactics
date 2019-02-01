@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
   totalCal =  387 - 7.31 * age + 1 * (10.9 * weight + 660.7 * height)
   }
 
+  console.log(totalCal)
+
   res.render("userHome", {});
   
 });
