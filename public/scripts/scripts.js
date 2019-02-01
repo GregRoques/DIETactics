@@ -33,4 +33,10 @@ $(document).ready(()=>{
             })
         }
     }
+
 }*/
+
+// User Home Page 
+$(".daily-progress-form").submit(()=>{
+    $(".right-information").css("visibility", "visible");
+})

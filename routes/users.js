@@ -6,7 +6,7 @@ const request = require("request");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render("userHome", {});
+  res.render("dailyInput", {});
 });
 
 module.exports = router;
