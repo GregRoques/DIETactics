@@ -3,20 +3,12 @@ var express = require('express');
 var router = express.Router();
 
 // middleware
-const expressSession = require('express-session');
+
 const config = require('../config');
 const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
 connection.connect();
 const bcrypt = require('bcrypt-nodejs');
-
-// establish Session
-const sessionOptions = {
-    secret: config.sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-  };
-router.use(expressSession(sessionOptions));
 
 // Get Login
 router.get('/', (req, res, next)=>{
@@ -38,6 +30,7 @@ router.post('/loginProcess',(req, res, next)=>{
     const checkPasswordQuery = `SELECT * FROM userProfileInfo WHERE email = ?`;
 
     connection.query(checkPasswordQuery,[email],(error, results)=>{
+         
         if(error){throw error;}
 
         if(results.length == 0 ){
@@ -50,8 +43,8 @@ router.post('/loginProcess',(req, res, next)=>{
 
                 res.redirect('/login?msg=badPass');
             }else{
-                console.log('======================================')
-                console.log(req.session)
+                
+                // console.log(results[0].id)
                 req.session.uid = results[0].id;
                 req.session.firstName = results[0].firstName;
                 req.session.sex = results[0].sex;
@@ -61,6 +54,7 @@ router.post('/loginProcess',(req, res, next)=>{
                 req.session.email= results[0].email
                 req.session.targetWeight = results[0].targetWeight
                 req.session.loggedIn = true;
+                // console.log(req.session)
 
                 res.redirect('/users');
 
