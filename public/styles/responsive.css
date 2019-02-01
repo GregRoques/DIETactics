@@ -57,6 +57,18 @@
     .navbar-desktop{display:flex;}
 }
 
+@media screen and (min-width:500px) and (max-width:1000px){
+    .center-container{
+        width:15rem;
+    }
+}
+
 @media screen and (max-width:1000px){
     .video-content{top:35%;}
+}
+
+@media screen and (max-width:1360px){
+    .center-container{
+        width:28rem;
+    }
 }
