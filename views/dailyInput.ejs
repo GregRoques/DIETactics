@@ -23,7 +23,29 @@
         </div>
         <div class="center-container">
             <h2>What Did You Eat Today?</h2>
-            
+            <form action="/users/dailyProgress" method="post" class="daily-progress-form">
+                <div class="date">
+                    <label for="date">Date</label>
+                    <input type="date" name="date">
+                </div>
+                <div class="meal">
+                    <label for="breakfast">Breakfast</label>
+                    <input type="text" class="meal-input" name="breakfast" placeholder="Enter each food and total ammount consumed here">
+                </div>
+                <div class="meal">
+                    <label for="lunch">Lunch</label>
+                    <input type="text" class="meal-input" name="lunch" placeholder="Enter each food and total ammount consumed here">
+                </div>
+                <div class="meal">
+                    <label for="breakfast">Dinner</label>
+                    <input type="text" class="meal-input" name="dinner" placeholder="Enter each food and total ammount consumed here">
+                </div>
+                <div class="meal">
+                    <label for="breakfast">Other</label>
+                    <input type="text" class="meal-input" name="other" placeholder="Enter each food and total ammount consumed here">
+                </div>
+                <input class="submit-meal-button" type="submit" value="Submit Meals!">
+            </form>
         </div>
         <div class="right-information">
             <div class="text-info">
@@ -35,7 +57,7 @@
                 <div class="number-text">1690</div>
             </div>
             <div class="text-info">
-                <div class="title-text">Recommended Daily Calories to Mainta Weight</div>
+                <div class="title-text">Today's Total</div>
                 <div class="number-text">2190</div>
             </div>
         </div>

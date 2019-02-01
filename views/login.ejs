@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login – DIETactics</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
@@ -19,9 +19,15 @@
             <h1>Log-In</h1>
             <h4>Please enter your log-in information in order to sign into your acccount. Please be wary of capitalization and what not when it comes to your username and password.</h4>
         </div>
+        <% if(msg){ %>
+        <div class="error-box">
+            <h1>Error</h1>
+            <p class="error-msg"><%= msg %></p>
+        </div>
+        <% } %>
         <form class="login-form" method="post" action="/register/registerProcess">
             <label for="email">Email Address</label>
-            <input class="text-input" type="text" name="email" />
+            <input class="text-input" type="email" name="email" />
             <label for="password">Password</label>
             <span>(Minimum of 8 characters required.)</span>
             <input class="text-input" type="password" name="password" />

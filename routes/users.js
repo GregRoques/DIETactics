@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const config = require('../config');
 const request = require("request");
+const config = require("../config");
 
+const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -22,7 +24,38 @@ router.get('/', function(req, res, next) {
   console.log(totalCal)
 
   res.render("userHome", {});
-  
+
+  res.render("dailyInput", {});
+});
+
+router.post("/dailyProgress", (req,res,next)=>{
+  const date = req.body.date;
+  const breakfast = req.body.breakfast;
+  const lunch = req.body.lunch;
+  const dinner = req.body.dinner;
+  const other = req.body.other;
+
+  const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
+  const headers = {
+    "content-Type": "application/json", 
+    "x-app-id" :`${config.apiAppId}`, 
+    "x-app-key":`${config.apiKey}`, 
+    "x-remote-user-id":`${config.activeUser}`
+  };
+
+  const options = {"query": `${breakfast} + ${lunch} + ${dinner} + ${other}`};
+  console.log (options)
+// console.log(headers);
+  request.post({url: searchUrl, headers: headers, body: JSON.stringify(options)},(error,res,body)=>{
+    const parsedData = JSON.parse(body);
+    const foodArray = parsedData.foods;
+    let totalCalories = 0;
+    for(let i = 0; i < foodArray.length; i++){
+      totalCalories += foodArray[i].nf_calories;
+      console.log(foodArray[i].food_name, foodArray[i].nf_calories)
+    }
+    console.log(totalCalories);
+  });
 });
 
 module.exports = router;
