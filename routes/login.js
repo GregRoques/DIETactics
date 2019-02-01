@@ -10,7 +10,7 @@ connection.connect();
 const bcrypt = require('bcrypt-nodejs');
 
 // Get Login
-router.get('/login', (req, res, next)=>{
+router.get('/', (req, res, next)=>{
     let msg;
     if(req.query.msg == 'noUser'){
         msg = 'This email is not registered.'
