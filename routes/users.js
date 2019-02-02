@@ -14,25 +14,24 @@ router.get('/', function(req, res, next) {
 
   const sex = req.session.sex;
   const age = req.session.age;
-  const weight = req.session.startingWeight;
+  const weight = req.session.targetWeight;
   const height = req.session.height;
  
   // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
-  let userCal = 0
+  let userCal
   if (sex == 'male'){
-    userCal = (Math.round(10 * weight) + (6.25 * height) - (5 * age) + 5);
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5));
   }else{
-    userCal = (Math.round(10 * weight) + (6.25 * height) - (5 * age) - 161);
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161));
   }
-  console.log('Harris-Benedict User Calorie Count')
-  console.log(userCal)
+  // console.log('Harris-Benedict User Calorie Count')
+  // console.log(userCal)
 
-  res.render("dailyInput", {});
+  res.render("dailyInput", {userCal});
 });
 
 router.post("/dailyProgress", (req,res,next)=>{
   const date = req.body.date;
-  console.log(date)
   const breakfast = req.body.breakfast;
   const lunch = req.body.lunch;
   const dinner = req.body.dinner;
@@ -67,12 +66,11 @@ router.post("/dailyProgress", (req,res,next)=>{
             if(error){throw error};
     });
   });
-});
+
+})
 
 router.get("/weeklyProgress", (req,res,next)=>{
   res.render("weeklyProgress", {});
 });
 
 module.exports = router;
-
-
