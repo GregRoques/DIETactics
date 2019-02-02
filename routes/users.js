@@ -70,7 +70,25 @@ router.post("/dailyProgress", (req,res,next)=>{
 });
 
 router.get("/weeklyProgress", (req,res,next)=>{
-  res.render("weeklyProgress", {});
+  let userDates = [];
+  let userWeightProgress = [];
+  const userProgressQuery = `SELECT date, dailyWeight, userId FROM userProgress
+  ORDER BY date
+  LIKE userId = ?;`
+  connection.query(userProgressQuery,[req.session.id],(error, results)=>{
+    if(error){throw error};
+    let userInformationArray = results;
+    for(let i = 0; i < userInformationArray.length; i++){
+      userDates.push(userInformationArray[i].date);
+      userWeightProgress.push(userInformationArray[i].dailyWeight)
+    }
+    let data = {
+      userDates : userDates,
+      userWeightProgress: userWeightProgress
+    };
+
+    res.render("weeklyProgress", {data});
+  });
 });
 
 module.exports = router;
