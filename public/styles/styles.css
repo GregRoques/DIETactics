@@ -713,3 +713,9 @@ p.error-msg{
     background:#11d66a;
     color:#020f07;
 }
+
+/* weekly progress */
+
+.graph-container {
+    width: 600px;
+}

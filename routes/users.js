@@ -48,15 +48,15 @@ router.post("/dailyProgress", (req,res,next)=>{
   };
 
   const options = {"query": `${breakfast} + ${lunch} + ${dinner} + ${other}`};
-  console.log (options)
-// console.log(headers);
+  // console.log (options)
+  // console.log(headers);
   request.post({url: searchUrl, headers: headers, body: JSON.stringify(options)},(error,res,body)=>{
     const parsedData = JSON.parse(body);
     const foodArray = parsedData.foods;
     let totalCalories = 0;
     for(let i = 0; i < foodArray.length; i++){
       totalCalories += foodArray[i].nf_calories;
-      console.log(foodArray[i].food_name, foodArray[i].nf_calories)
+      // console.log(foodArray[i].food_name, foodArray[i].nf_calories)
       
     }
     const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userID)
@@ -70,7 +70,82 @@ router.post("/dailyProgress", (req,res,next)=>{
 })
 
 router.get("/weeklyProgress", (req,res,next)=>{
-  res.render("weeklyProgress", {});
+  let userDates = [];
+  let userWeightProgress = [];
+  const userProgressQuery = `SELECT date, dailyWeight, userId FROM userProgress
+  ORDER BY date
+  LIKE userId = ?;`
+  connection.query(userProgressQuery,[req.session.id],(error, results)=>{
+    if(error){throw error};
+    let userInformationArray = results;
+    for(let i = 0; i < userInformationArray.length; i++){
+      userDates.push(userInformationArray[i].date);
+      userWeightProgress.push(userInformationArray[i].dailyWeight)
+    }
+    let data = {
+      userDates : userDates,
+      userWeightProgress: userWeightProgress
+    };
+
+    res.render("weeklyProgress", {data});
+  });
 });
 
+
+router.get("/profile",(req,res,next)=>{
+  const userId = req.session.id;
+  const selectUserProfileQuery = `SELECT * FROM userProfileInfo
+  WHERE id = ?`;
+
+  connection.query(selectUserProfileQuery,[userId],(err,results)=>{
+    if(err){throw err};
+
+    let msg;
+    res.render('profile',{msg});
+  });
+});
+
+router.post('/profileEdit',(req,res,next)=>{
+  // Name, Age, Sex, Id
+  const editFirstName = req.body.firstName;
+  const editAge = req.body.age;
+  const editSex = req.body.sex;
+  const userId = req.session.id;
+
+  // Height
+  let editHeightFeet = parseInt(req.body.heightFeet);
+  let editHeightInches = parseInt(req.body.heightInches);
+  let editHeightTotalInches = (editHeightFeet * 12) + editHeightInches;
+  const editHeighTotalCm = editHeightTotalInches * 2.54;
+
+  // Weight
+  let editStartWeightLb = parseInt(req.body.startingWeight);
+  const editStartWeightKg = editStartWeightLb * 0.453592;
+  let editTargetWeightLb = parseInt(req.body.targetWeight);
+  const editTargetWeightKg = editTargetWeightLb * 0.453592;
+
+  // Password & Edit Queries
+  const passWord = req.body.passWord;
+  const checkPasswordQuery = `SELECT * FROM userProfileInfo WHERE id = ?`;
+  const editUserQuery = `UPDATE userProfileInfo
+    SET firstName = ?, age = ?, sex = ?, height = ?, startingWeight = ?, targetWeight = ?
+    WHERE id = ?`;
+
+  connection.query(checkPasswordQuery,[userId],(err, results)=>{
+    if(err){throw err;}
+
+    const passwordsMatch = bcrypt.compareSync(passWord,results[0].hash)
+    if(passwordsMatch){
+      connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
+        if(err_2){throw err_2};
+      })
+      res.redirect('/');
+    }
+    else{
+      res.redirect('profile?msg=badPass');
+    }
+  });
+})
+
 module.exports = router;
+

@@ -72,8 +72,8 @@ router.post("/userProfileCreation", (req,res,next)=>{
     const insertUserQuery = `INSERT INTO userProfileInfo (firstName, sex, height, startingWeight, age, targetWeight, email, hash)
         VALUES
         (?,?,?,?,?,?,?,?);`;
-        connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, email, hashPass],(error, results)=>{
-            if(error){throw error};
+    connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, email, hashPass],(error, results)=>{
+        if(error){throw error};
     });
     res.redirect('/login');
   });
