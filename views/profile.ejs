@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edit Profie</title>
+    <title>Edit Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
     <div>
         <% include navbar.ejs %>
-        <div class="profile-header">
+        <div class="edit-profile-header">
             <h1>Edit Profile</h1>
             <h4>Here you can make any changes you want to your profile as it currently exists.</h4>
         </div>
@@ -26,9 +26,9 @@
         <% } %>
         <form action="profileEdit" method="post" class="register-form">
             <label for="firstName">First Name</label>
-            <input type="text" class="text-input" name="firstName" value="<%= %>"/>
+            <input type="text" class="text-input" name="firstName" value="<%= data.firstName %>"/>
             <label for="age">Age</label>
-            <input type="text" class="text-input" name="age" value="">
+            <input type="text" class="text-input" name="age" value="<%= data.age %>">
             <label for="sex">Sex</label>
             <select class="button-input" name="sex">
                 <option value="male">Male</option>
@@ -65,9 +65,9 @@
                 </select>
             </div>
             <label for="startingWeight">Starting Weight</label>
-            <input type="text" class="text-input" name="startingWeight" placeholder="Enter your starting weight in pounds here"/>
+            <input type="text" class="text-input" name="startingWeight" value="<%= data.startingWeight %>"/>
             <label for="targetWeight">Target Weight</label>
-            <input type="text" class="text-input" name="targetWeight" placeholder="Enter your target weight in pounds here"/>
+            <input type="text" class="text-input" name="targetWeight" value="<%= data.targetWeight %>"/>
             <label class="pw-label" for="passWord">Please enter your password below to verify your changes.</label>
             <input type="password" class="text-input" name="passWord"/>
             <input class="btn-input" type="submit" value="Create Profile"/>
