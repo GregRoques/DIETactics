@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Profie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
+</head>
+<body>
+    <div>
+        <% include navbar.ejs %>
+        <div class="profile-header">
+            <h1>Edit Profile</h1>
+            <h4>Here you can make any changes you want to your profile as it currently exists.</h4>
+        </div>
+        <% if(msg){ %>
+        <div class="error-box">
+            <h1>Error</h1>
+            <p class="error-msg"><%= msg %></p>
+        </div>
+        <% } %>
+        <form action="profileEdit" method="post" class="register-form">
+            <label for="firstName">First Name</label>
+            <input type="text" class="text-input" name="firstName" value="<%= %>"/>
+            <label for="age">Age</label>
+            <input type="text" class="text-input" name="age" value="">
+            <label for="sex">Sex</label>
+            <select class="button-input" name="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <label for="height">Height</label>
+            <div class="height-input">
+                <select class="button-input" name="heightFeet">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <select class="button-input" name="heightInches">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <label for="startingWeight">Starting Weight</label>
+            <input type="text" class="text-input" name="startingWeight" placeholder="Enter your starting weight in pounds here"/>
+            <label for="targetWeight">Target Weight</label>
+            <input type="text" class="text-input" name="targetWeight" placeholder="Enter your target weight in pounds here"/>
+            <label class="pw-label" for="passWord">Please enter your password below to verify your changes.</label>
+            <input type="password" class="text-input" name="passWord"/>
+            <input class="btn-input" type="submit" value="Create Profile"/>
+        </form>
+    </div> 
+    <% include footer.ejs %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/scripts.js"></script>
+</body>
+</html>
