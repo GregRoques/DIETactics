@@ -93,7 +93,7 @@ router.get("/weeklyProgress", (req,res,next)=>{
 
 
 router.get("/profile",(req,res,next)=>{
-  const userId = req.session.id;
+  const userId = req.session.uid;
   const selectUserProfileQuery = `SELECT * FROM userProfileInfo
   WHERE id = ?`;
 
@@ -101,7 +101,18 @@ router.get("/profile",(req,res,next)=>{
     if(err){throw err};
 
     let msg;
-    res.render('profile',{msg});
+    res.render('profile',{
+      data : {
+        firstName: results[0].firstName,
+        age: results[0].age,
+        sex: results[0].sex,
+        heightFeet: results[0].height,
+        heightInches: results[0].height,
+        startingWeight: results[0].startingWeight,
+        targetWeight: results[0].targetWeight
+      },
+      msg
+    });
   });
 });
 
