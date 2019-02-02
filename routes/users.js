@@ -17,20 +17,22 @@ router.get('/', function(req, res, next) {
   const weight = req.session.startingWeight;
   const height = req.session.height;
  
-  // let userCal
-  // if (sex == 'male'){
-  //   userCal = ((864 - (9.72 * age) + 1) * (14.2 * weight + 503 * height)) / 4.184;
-  // }else{
-  // userCal =  (387 - 7.31 * age + 1 * (10.9 * weight + 660.7 * height))/ 4.184
-  // }
-  // console.log('Console Placeholder')
-  // console.log(userCal)
+  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
+  let userCal = 0
+  if (sex == 'male'){
+    userCal = (Math.round(10 * weight) + (6.25 * height) - (5 * age) + 5);
+  }else{
+    userCal = (Math.round(10 * weight) + (6.25 * height) - (5 * age) - 161);
+  }
+  console.log('Harris-Benedict User Calorie Count')
+  console.log(userCal)
 
   res.render("dailyInput", {});
 });
 
 router.post("/dailyProgress", (req,res,next)=>{
   const date = req.body.date;
+  console.log(date)
   const breakfast = req.body.breakfast;
   const lunch = req.body.lunch;
   const dinner = req.body.dinner;
