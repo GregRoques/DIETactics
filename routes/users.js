@@ -7,28 +7,10 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
 connection.connect();
 
+let totalCalories = 0;
+
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-
-  const sex = req.session.sex;
-  const age = req.session.age;
-  const weight = req.session.targetWeight;
-  const height = req.session.height;
- 
-  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
-  let userCal
-  if (sex == 'male'){
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5));
-  }else{
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161));
-  }
-  // console.log('Harris-Benedict User Calorie Count')
-  // console.log(userCal)
-
-  res.render("dailyInput", {userCal});
-});
 
 router.post("/dailyProgress", (req,res,next)=>{
   const date = req.body.date;
@@ -53,7 +35,7 @@ router.post("/dailyProgress", (req,res,next)=>{
   request.post({url: searchUrl, headers: headers, body: JSON.stringify(options)},(error,res,body)=>{
     const parsedData = JSON.parse(body);
     const foodArray = parsedData.foods;
-    let totalCalories = 0;
+    // let totalCalories = 0;
     for(let i = 0; i < foodArray.length; i++){
       totalCalories += foodArray[i].nf_calories;
       // console.log(foodArray[i].food_name, foodArray[i].nf_calories)
@@ -65,9 +47,33 @@ router.post("/dailyProgress", (req,res,next)=>{
         connection.query(insertUserQuery,[dailyWeight,date,totalCalories,id],(error, results)=>{
             if(error){throw error};
     });
+    // need to refresh page here
   });
 
 })
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+
+  const sex = req.session.sex;
+  const age = req.session.age;
+  const weight = req.session.targetWeight;
+  const height = req.session.height;
+ 
+  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
+  let userCal
+  let dailyCal = (Math.round(totalCalories)).toString();
+  if (sex == 'male'){
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
+  }else{
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
+  }
+  // console.log('Harris-Benedict User Calorie Count')
+  // console.log(userCal)
+
+  res.render("dailyInput", {userCal, dailyCal});
+});
+
 
 router.get("/weeklyProgress", (req,res,next)=>{
   let userDates = [];
@@ -93,7 +99,7 @@ router.get("/weeklyProgress", (req,res,next)=>{
 
 
 router.get("/profile",(req,res,next)=>{
-  const userId = req.session.id;
+  const userId = req.session.uid;
   const selectUserProfileQuery = `SELECT * FROM userProfileInfo
   WHERE id = ?`;
 
@@ -101,7 +107,18 @@ router.get("/profile",(req,res,next)=>{
     if(err){throw err};
 
     let msg;
-    res.render('profile',{msg});
+    res.render('profile',{
+      data : {
+        firstName: results[0].firstName,
+        age: results[0].age,
+        sex: results[0].sex,
+        heightFeet: results[0].height,
+        heightInches: results[0].height,
+        startingWeight: results[0].startingWeight,
+        targetWeight: results[0].targetWeight
+      },
+      msg
+    });
   });
 });
 
@@ -148,4 +165,3 @@ router.post('/profileEdit',(req,res,next)=>{
 })
 
 module.exports = router;
-
