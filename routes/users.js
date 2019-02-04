@@ -13,7 +13,7 @@ const currDate = new Date()
 let currMon= currDate.getMonth()+1
 let currDay= currDate.getDate()
 let currYear = currDate.getFullYear()
-let publishDate = `$${currYear}-${currMon}-${currDay}`
+let publishDate = `${currYear}-${currMon}-${currDay}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
