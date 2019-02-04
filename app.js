@@ -35,10 +35,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Check if logged in
+app.use((req,res,next)=>{
+  if(req.session.loggedIn){
+    res.locals.loggedIn = true;
+  } else {
+    res.locals.loggedIn = false;
+  }
+  console.log(res.locals);
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/login", loginRouter);
-
 app.use("/register", registerRouter);
 
 

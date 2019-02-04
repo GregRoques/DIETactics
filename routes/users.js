@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const config = require('../config');
 const request = require("request");
+const bcrypt = require("bcrypt-nodejs");
 
 const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
@@ -134,12 +135,12 @@ router.get("/profile",(req,res,next)=>{
   });
 });
 
-router.post('/profileEdit',(req,res,next)=>{
+router.post('/profile/profileEdit',(req,res,next)=>{
   // Name, Age, Sex, Id
   const editFirstName = req.body.firstName;
   const editAge = req.body.age;
   const editSex = req.body.sex;
-  const userId = req.session.id;
+  const userId = req.session.uid;
 
   // Height
   let editHeightFeet = parseInt(req.body.heightFeet);
@@ -168,7 +169,7 @@ router.post('/profileEdit',(req,res,next)=>{
       connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
         if(err_2){throw err_2};
       })
-      res.redirect('/');
+      res.redirect('/users');
     }
     else{
       res.redirect('profile?msg=badPass');
