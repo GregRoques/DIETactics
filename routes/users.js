@@ -32,7 +32,7 @@ router.post("/dailyProgress", (req,res,next)=>{
   const options = {"query": `${breakfast} + ${lunch} + ${dinner} + ${other}`};
   // console.log (options)
   // console.log(headers);
-  request.post({url: searchUrl, headers: headers, body: JSON.stringify(options)},(error,res,body)=>{
+  request.post({url: searchUrl, headers: headers, body: JSON.stringify(options)},(error,response,body)=>{
     const parsedData = JSON.parse(body);
     const foodArray = parsedData.foods;
     // let totalCalories = 0;
@@ -41,13 +41,26 @@ router.post("/dailyProgress", (req,res,next)=>{
       // console.log(foodArray[i].food_name, foodArray[i].nf_calories)
       
     }
-    const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userID)
-        VALUES
-        (?,?,?,?);`;
-        connection.query(insertUserQuery,[dailyWeight,date,totalCalories,id],(error, results)=>{
+    const selectUserQuery = `
+    SELECT * from userProgress WHERE date = '${date}' AND userId = '${id}';`
+        
+        connection.query(selectUserQuery,(error, results)=>{
             if(error){throw error};
+            if(results.length > 0){
+              const updateUserQuery =`UPDATE userProgress SET dailyWeight = ?, calories = ? WHERE date = '${date}' AND userId = '${id}'`;
+              connection.query(updateUserQuery,[dailyWeight,totalCalories],(error, results)=>{
+                if(error){throw error};
+              });
+            } else {
+              const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userID)
+              VALUES
+              (?,?,?,?);`;
+              connection.query(insertUserQuery,[dailyWeight,date,totalCalories,id],(error, results)=>{
+                  if(error){throw error};
+              });
+            }
     });
-    // need to refresh page here
+    res.redirect('/users')
   });
 
 })
