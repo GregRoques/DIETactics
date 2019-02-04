@@ -22,7 +22,7 @@
 }
 
 @media screen and (max-width:700px){
-    .video-content h1, .register-header, .login-header, .profile-header, .user-header h1{font-size:5rem;}
+    .video-content h1, .register-header h1, .login-header h1, .profile-header h1, .user-header h1, .weekly-progress-header h1{font-size:5rem;}
     .footer{
         font-size:0.875rem;
     }
@@ -43,6 +43,9 @@
     }
     .number-text{
         font-size:2rem;
+    }
+    .graph-container{
+        margin:2rem;
     }
 }
 
@@ -80,8 +83,23 @@
     }
 }
 
+@media screen and (min-width:700px) and (max-width:1000px){
+    .graph-container{
+        width:22rem;
+    }
+    .user-container{
+        margin-bottom:5rem;
+    }
+}
+
 @media screen and (max-width:1000px){
     .video-content{top:35%;}
+}
+
+@media screen and (min-width:1000px) and (max-width:1360px){
+    .graph-container{
+        width:28rem;
+    }
 }
 
 @media screen and (max-width:1360px){
