@@ -17,6 +17,8 @@ router.get('/',(req, res)=>{
         msg = 'This email address is already registered. Please try again!';
     }else if(req.query.msg == 'password'){
         msg = 'The password you entered is not long enough. Please enter a password this is 8 characters long or more.'
+    }else if (req.query.msg == 'profile'){
+        msg ='You must fill out all fields.'
     }
     res.render('register',{msg});
 });
@@ -69,13 +71,21 @@ router.post("/userProfileCreation", (req,res,next)=>{
     const targetWeightKg = targetWeightLb * 0.453592;
     // console.log(targetWeightKg);
 
+    if (firstName =='' || sex == ''|| heightTotalCm == 0 || startingWeightKg == 0 || age == 0 || targetWeightKg == 0){
+        res.redirect('profileCreation?msg=profile');
+    } else{
+
     const insertUserQuery = `INSERT INTO userProfileInfo (firstName, sex, height, startingWeight, age, targetWeight, email, hash)
         VALUES
         (?,?,?,?,?,?,?,?);`;
+
     connection.query(insertUserQuery,[firstName, sex, heightTotalCm, startingWeightKg, age, targetWeightKg, email, hashPass],(error, results)=>{
         if(error){throw error};
+        
     });
+}
     res.redirect('/login?msg=register');
   });
+
 
 module.exports = router;
