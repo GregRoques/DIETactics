@@ -17,7 +17,6 @@ let publishDate = `${currYear}-${currMon}-${currDay}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
-
 router.post("/dailyProgress", (req,res,next)=>{
   const date = req.body.date;
   const breakfast = req.body.breakfast;
@@ -107,14 +106,7 @@ router.get('/', function(req, res, next) {
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
   }
-  // console.log('Harris-Benedict User Calorie Count')
-  // console.log(userCal)
 
-  res.render("dailyInput", {publishDate, userCal, calGoal, gainLose, dailyCal});
-});
-
-
-router.get("/weeklyProgress", (req,res,next)=>{
   let userDates = [];
   let userWeightProgress = [];
   let userCalories = [];
@@ -136,10 +128,9 @@ router.get("/weeklyProgress", (req,res,next)=>{
       userCalories: userCalories
     };
 
-    res.render("weeklyProgress", {data});
+    res.render("weeklyProgress", {data, publishDate, userCal, calGoal, gainLose, dailyCal});
   });
 });
-
 
 router.get("/profile",(req,res,next)=>{
   const userId = req.session.uid;

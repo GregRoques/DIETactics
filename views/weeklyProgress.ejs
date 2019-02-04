@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Weekly Progress</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
-    <link rel="stylesheet" href="/styles/responsive.css" />
+    <link rel="stylesheet" href="/styles/users.css" />
     <link rel="stylesheet" href="/styles/weeklyProgress.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
 </head>
 <body>
     <% include navbar %>
@@ -20,28 +21,35 @@
     </div>
     <div class="user-container">
         <div class="left-nav">
-            <div class="profile-link"><a class="left-nav-link" href="#">Profile</a></div>
-            <div class="daily-input-link"><a class="left-nav-link" href="#">Daily Input</a></div>
-            <div class="weekly-progress-link"><a class="left-nav-link" href="#">Weekly Progress</a></div>
-            <div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>
-            <div class="log-out-link"><a class="left-nav-link" href="#">Log Out</a></div>
+            <div class="profile-link"><a class="left-nav-link" href="/users/profile">Profile</a></div>
+            <div class="daily-input-link"><a class="left-nav-link" href="/users">Daily Input</a></div>
+            <div class="weekly-progress-link"><a class="left-nav-link" href="">Weekly Progress</a></div>
+            <!--<div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>-->
+            <div class="log-out-link"><a class="left-nav-link" href="/login/logout">Log Out</a></div>
         </div>
         <div class="graph-container">
             <canvas id="myChart" width="300" height="300"></canvas>
         </div>
         <div class="progress-information">
             <div class="progress-info">
-                <div class="title-text"></div>
-                <div class="number-text"></div>
+                <div class="title-text">Date</div>
+                <div class="number-text"><%= publishDate%></div>
+            </div>
+            <div class="progress-info">
+                <div class="title-text">Recommended Daily Calories to Maintain Weight</div>
+                <div class="number-text"><%= userCal%></div>
+            </div>
+            <div class="progress-info">
+                <div class="title-text">Recommended Daily Calories to <%= gainLose%> one pound per week</div>
+                <div class="number-text"><%= calGoal%></div>
+            </div>
+            <div class="progress-info">
+                <div class="title-text">Today's Total</div>
+                <div class="number-text"><%= dailyCal%></div>
             </div>
         </div>
     </div>
-        
-
-
     <% include footer %>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/scripts/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
@@ -62,22 +70,14 @@
                     label: 'Daily Weight',
                     data: dataFromNode.userWeightProgress.reverse(),
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
+                        'rgba(50, 50, 102, 0.9)',
+                        'rgba(46, 66, 102, 0.9)',
+                        'rgba(39, 98, 102, 0.9)',
+                        'rgba(34, 130, 102, 0.9)',
+                        'rgba(25, 170, 102, 0.9)',
+                        'rgba(20, 202, 102, 0.9)',
+                        'rgba(18,209,112,0.9)'
+                    ]
                 }]
             },
             options: {
@@ -87,6 +87,17 @@
                             beginAtZero:true
                         }
                     }]
+                },
+                layout: {
+                    padding: {
+                        left:15,
+                        right:15,
+                        top:35,
+                        bottom:15
+                    }
+                },
+                legend:{
+                    display:false
                 }
             }
         });
