@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 // Get Login
 router.get('/', (req, res, next)=>{
-    let msg;
+    let title, msg;
     if(req.query.msg == 'noUser'){
         title = 'Error';
         msg = 'This email is not registered in our system. Please try again.'

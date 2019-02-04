@@ -33,37 +33,37 @@
             <input type="text" class="text-input" name="age" value="<%= data.age %>">
             <label for="sex">Sex</label>
             <select class="button-input" name="sex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option id="male" value="male" <%= (data.sex=='male')?'selected':'' %>>Male</option>
+                <option id="female" value="female" <%= (data.sex=='female')?'selected':'' %>>Female</option>
             </select>
             <label for="height">Height</label>
             <div class="height-input">
                 <select class="button-input" name="heightFeet">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
+                    <option id="foot-0" value="0" <%= (data.heightFeet==0)?'selected':'' %>>0</option>
+                    <option id="foot-1" value="1" <%= (data.heightFeet==1)?'selected':'' %>>1</option>
+                    <option id="foot-2" value="2" <%= (data.heightFeet==2)?'selected':'' %>>2</option>
+                    <option id="foot-3" value="3" <%= (data.heightFeet==3)?'selected':'' %>>3</option>
+                    <option id="foot-4" value="4" <%= (data.heightFeet==4)?'selected':'' %>>4</option>
+                    <option id="foot-5" value="5" <%= (data.heightFeet==5)?'selected':'' %>>5</option>
+                    <option id="foot-6" value="6" <%= (data.heightFeet==6)?'selected':'' %>>6</option>
+                    <option id="foot-7" value="7" <%= (data.heightFeet==7)?'selected':'' %>>7</option>
+                    <option id="foot-8" value="8" <%= (data.heightFeet==8)?'selected':'' %>>8</option>
+                    <option id="foot-9" value="9" <%= (data.heightFeet==9)?'selected':'' %>>9</option>
                 </select>
                 <select class="button-input" name="heightInches">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option id="inch-0" value="0" <%= (data.heightInches==0)?'selected':'' %>>0</option>
+                    <option id="inch-1" value="1" <%= (data.heightInches==1)?'selected':'' %>>1</option>
+                    <option id="inch-2" value="2" <%= (data.heightInches==2)?'selected':'' %>>2</option>
+                    <option id="inch-3" value="3" <%= (data.heightInches==3)?'selected':'' %>>3</option>
+                    <option id="inch-4" value="4" <%= (data.heightInches==4)?'selected':'' %>>4</option>
+                    <option id="inch-5" value="5" <%= (data.heightInches==5)?'selected':'' %>>5</option>
+                    <option id="inch-6" value="6" <%= (data.heightInches==6)?'selected':'' %>>6</option>
+                    <option id="inch-7" value="7" <%= (data.heightInches==7)?'selected':'' %>>7</option>
+                    <option id="inch-8" value="8" <%= (data.heightInches==8)?'selected':'' %>>8</option>
+                    <option id="inch-9" value="9" <%= (data.heightInches==9)?'selected':'' %>>9</option>
+                    <option id="inch-10" value="10" <%= (data.heightInches==10)?'selected':'' %>>10</option>
+                    <option id="inch-11" value="11" <%= (data.heightInches==11)?'selected':'' %>>11</option>
+                    <option id="inch-12" value="12" <%= (data.heightInches==12)?'selected':'' %>>12</option>
                 </select>
             </div>
             <label for="startingWeight">Starting Weight</label>

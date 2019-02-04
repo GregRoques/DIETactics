@@ -106,16 +106,28 @@ router.get("/profile",(req,res,next)=>{
   connection.query(selectUserProfileQuery,[userId],(err,results)=>{
     if(err){throw err};
 
+    let heightTotalInches = Math.round(results[0].height / 2.54);
+    let heightFeet;
+    let heightInches = 0;
+    if(heightTotalInches % 12 > 0){
+      while(heightTotalInches % 12 > 0){
+        heightInches += 1;
+        heightTotalInches= heightTotalInches - 1;
+        heightFeet = heightTotalInches;
+      }
+    }
+    heightFeet = heightFeet/12;
+
     let msg;
     res.render('profile',{
       data : {
         firstName: results[0].firstName,
         age: results[0].age,
         sex: results[0].sex,
-        heightFeet: results[0].height,
-        heightInches: results[0].height,
-        startingWeight: results[0].startingWeight,
-        targetWeight: results[0].targetWeight
+        heightFeet: heightFeet,
+        heightInches: heightInches,
+        startingWeight: Math.round(results[0].startingWeight / 0.453592),
+        targetWeight: Math.round(results[0].targetWeight / 0.45359),
       },
       msg
     });
