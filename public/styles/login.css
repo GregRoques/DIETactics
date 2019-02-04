@@ -1,0 +1,95 @@
+/* Log-In Page */
+.login-header{
+    background:url('/images/login_bg.jpg');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    margin:0 auto;
+    padding-top:8rem;
+    padding-bottom:3rem;
+    text-align:center;
+}
+
+.login-header h1{
+    font-size:6rem;
+    font-family:'Righteous',sans-serif;
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.login-header h4{
+    margin:2rem auto 0;
+    width:70%;
+    font-family:'Roboto',sans-serif;
+    font-weight:500;
+    font-size:1.5rem;
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
+    background-color:rgba(14, 161, 80, 0.75);
+    padding:2rem 1.25rem;
+}
+
+.login-form{
+    width:80%;
+    margin:3rem auto 3rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:#fff;
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+    padding:3rem;
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.login-form label{
+    font-family:'Righteous',sans-serif;
+    font-size:1.5rem;
+}
+
+.login-form span{
+    font-family:'Roboto',sans-serif;
+    font-size:0.875rem;
+}
+
+.login-form .text-input{
+    margin-top:.25rem;
+    background:#11d66a;
+    color:#020f07;
+    border:0;
+    width:20rem;
+    font-size:1rem;
+    padding:0.25rem;
+    font-family:'Roboto',sans-serif;
+    margin-bottom:1rem;
+    transition:0.1s ease-out all;
+}
+
+.login-form .button-input{
+    margin-top:.25rem;
+    background:#11d66a;
+    color:#020f07;
+    border:0;
+    font-size:1rem;
+    padding:0.25rem;
+    font-family:'Roboto',sans-serif;
+    margin-bottom:1rem;
+    transition:0.1s ease-out all;
+}
+
+.login-form .text-input:hover{
+    background:#13d168;
+}
+
+.login-form .btn-input{
+    background:#020f07;
+    color:#fff;
+    padding:0.25rem 1rem;
+    border:0;
+    border-radius:2px;
+    font-family:'Roboto',sans-serif;
+    font-size:1.25rem;
+    transition:0.2s ease-out all;
+}
+
+.login-form .btn-input:hover{
+    background:#11d66a;
+    color:#020f07;
+}

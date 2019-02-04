@@ -1,0 +1,61 @@
+/* Profile Creation Page */
+.height-input .button-input{
+    display:inline-block;
+}
+
+.profile-header{
+    background:url('/images/scale.jpg');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    margin:0 auto;
+    padding-top:8rem;
+    padding-bottom:3rem;
+    text-align:center;
+}
+
+.profile-header h1{
+    font-size:6rem;
+    font-family:'Righteous',sans-serif;
+    text-shadow:2px 2px 8px rgba(2, 15, 7, 0.75);
+}
+
+.profile-header h4{
+    margin:2rem auto 0;
+    width:70%;
+    font-family:'Roboto',sans-serif;
+    font-weight:500;
+    font-size:1.5rem;
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
+    background-color:rgba(14, 161, 80, 0.75);
+    padding:2rem 1.25rem;
+}
+
+/* Edit Profile Page */
+.edit-profile-header{
+    background:url('/images/editprofile.jpg');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    margin:0 auto;
+    padding-top:8rem;
+    padding-bottom:3rem;
+    text-align:center;
+}
+
+.edit-profile-header h1{
+    font-size:6rem;
+    font-family:'Righteous',sans-serif;
+    text-shadow:2px 2px 8px rgba(2, 15, 7, 0.75);
+}
+
+.edit-profile-header h4{
+    margin:2rem auto 0;
+    width:70%;
+    font-family:'Roboto',sans-serif;
+    font-weight:500;
+    font-size:1.5rem;
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
+    background-color:rgba(14, 161, 80, 0.75);
+    padding:2rem 1.25rem;
+}
