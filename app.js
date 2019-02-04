@@ -42,7 +42,6 @@ app.use((req,res,next)=>{
   } else {
     res.locals.loggedIn = false;
   }
-  console.log(res.locals);
   next();
 });
 

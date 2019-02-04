@@ -26,6 +26,11 @@
                     <h1><%= title %></h1>
                     <p class="error-msg"><%= msg %></p>
                 </div>
+            <% } else if(msg == 'loggedOut'){ %>
+                <div class="error-box">
+                    <h1><%= title %></h1>
+                    <p class="error-msg"><%= msg %></p>
+                </div>
             <% } else { %>
                 <div class="error-box">
                     <h1><%= title %></h1>
