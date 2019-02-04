@@ -177,9 +177,3 @@ p.error-msg{
     font-size:1.25rem;
     text-align:center;
 }
-
-/* weekly progress */
-
-.graph-container {
-    width: 600px;
-}
