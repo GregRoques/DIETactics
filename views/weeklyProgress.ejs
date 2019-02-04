@@ -10,9 +10,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/responsive.css" />
+    <link rel="stylesheet" href="/styles/weeklyProgress.css" />
 </head>
 <body>
     <% include navbar %>
+    <div class="weekly-progress-header">
+        <h1>Weekly Progress</h1>
+        <h4>Take a look at the chart below to see how your weight goals are being met!</h4>
+    </div>
     <div class="user-container">
         <div class="left-nav">
             <div class="profile-link"><a class="left-nav-link" href="#">Profile</a></div>
@@ -21,12 +26,19 @@
             <div class="monthly-progress-link"><a class="left-nav-link" href="#">Monthly Progress</a></div>
             <div class="log-out-link"><a class="left-nav-link" href="#">Log Out</a></div>
         </div>
+        <div class="graph-container">
+            <canvas id="myChart" width="300" height="300"></canvas>
+        </div>
+        <div class="progress-information">
+            <div class="progress-info">
+                <div class="title-text"></div>
+                <div class="number-text"></div>
+            </div>
+        </div>
     </div>
-    <div class="graph-container">
-        <canvas id="myChart" width="400" height="400"></canvas>
-    </div>
-    <div class="test info">
-    </div>
+        
+
+
     <% include footer %>
 
 
@@ -36,13 +48,18 @@
     <script type="text/javascript">
         let dataFromNode = <%-JSON.stringify(data)%>;
         console.log(dataFromNode);
+        let dates = dataFromNode.userDates
+        const formattedDates = dates.map((date)=>{
+            return date.slice(0,10);
+        });
+        console.log(formattedDates);
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: dataFromNode.userDates,
+                labels: formattedDates,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Calories Consumed',
                     data: dataFromNode.userWeightProgress,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

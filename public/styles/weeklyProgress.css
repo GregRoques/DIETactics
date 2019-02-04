@@ -1,0 +1,80 @@
+.weekly-progress-header{
+    background:url('/images/user_bg.jpeg');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    margin:0 auto;
+    padding-top:8rem;
+    padding-bottom:3rem;
+    text-align:center;
+}
+
+.weekly-progress-header h1{
+    font-size:6rem;
+    font-family:'Righteous',sans-serif;
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.user-container{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Righteous',sans-serif;
+    margin: 2rem;
+}
+
+.left-nav, .graph-container{
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+    height:100%;
+    background:#fff;
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+}
+
+.left-nav{
+    padding:1rem;
+}
+
+.left-nav div{
+    margin:0.5rem;
+    padding-bottom:0.25rem;
+    border-bottom:1px solid #11d66a;
+}
+
+.left-nav-link{
+    color:#020f07;
+    transition:0.2s ease-out color;
+}
+
+.left-nav-link:hover{
+    color:rgba(17, 214, 106, 0.933);
+}
+
+.graph-container {
+    width: 100%;
+    max-width: 40rem;
+}
+
+.progress-information {
+    background-color:#FFFC00;
+    color:#020f07;
+    height:100%;
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+    width:15rem;
+}
+
+.progress-info{
+    margin:0.5rem auto;
+    text-align:center;
+}
+
+.title-text{
+    margin:0 auto;
+    width:70%;
+    font-size:1.25rem;
+    padding-bottom:0.5rem;
+    border-bottom:1px solid #020f07;
+}
+
+.number-text{
+    font-size:1.5rem;
+    padding:0.375rem 0;
+}
