@@ -1,4 +1,6 @@
+/* Weekly Progress */
 .weekly-progress-header{
+    width:100vw;
     background:url('/images/user_bg.jpeg');
     background-size:cover;
     background-position:center;
@@ -13,6 +15,17 @@
     font-size:6rem;
     font-family:'Righteous',sans-serif;
     text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.weekly-progress-header h4{
+    margin:2rem auto 0;
+    width:70%;
+    font-family:'Roboto',sans-serif;
+    font-weight:500;
+    font-size:1.5rem;
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
+    background-color:rgba(14, 161, 80, 0.75);
+    padding:2rem 1.25rem;
 }
 
 .user-container{
