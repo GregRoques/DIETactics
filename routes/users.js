@@ -9,7 +9,11 @@ const connection = mysql.createConnection(config.db);
 connection.connect();
 
 let totalCalories = 0;
-let publishDate
+const currDate = new Date()
+let currMon= currDate.getMonth()+1
+let currDay= currDate.getDate()
+let currYear = currDate.getFullYear()
+let publishDate = `$${currYear}-${currMon}-${currDay}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
@@ -25,9 +29,7 @@ router.post("/dailyProgress", (req,res,next)=>{
   const id = req.session.uid;
   const dailyWeight = req.body.dailyWeight;
 
-  dateArray = date.split('-')
-  dateYear = dateArray.shift()
-  formattedArray = (dateArray.push(dateYear)).shift()
+  publishDate = date.replace(/-0+/g, '-')
 
 
   const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
@@ -82,18 +84,13 @@ router.get('/', function(req, res, next) {
   const startWeight = req.session.startingWeight;
   const weight = req.session.targetWeight;
   const height = req.session.height;
-
-  const currDate = new Date()
-  let currMon= currDate.getMonth()+1
-  let currDay= currDate.getDate()
-  let currYear = currDate.getFullYear()
-  publishdate = `${currMon}-${currDay}-${currYear}`
  
   // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
   let userCal
   let calGoal
   let gainLose
   let dailyCal = (Math.round(totalCalories)).toString();
+  
   if (sex == 'male'){
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
     if(startWeight>weight){
