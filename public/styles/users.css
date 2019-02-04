@@ -1,0 +1,181 @@
+/* User Home Page */
+.user-header{
+    background:url('/images/user_bg.jpeg');
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    margin:0 auto;
+    padding-top:8rem;
+    padding-bottom:3rem;
+    text-align:center;
+}
+
+.user-header h1{
+    font-size:6rem;
+    font-family:'Righteous',sans-serif;
+    text-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.user-header h4{
+    margin:2rem auto 0;
+    width:70%;
+    font-family:'Roboto',sans-serif;
+    font-weight:500;
+    font-size:1.5rem;
+    text-shadow:1px 1px 1px rgba(2, 15, 7, 0.502);
+    background-color:rgba(14, 161, 80, 0.75);
+    padding:2rem 1.25rem;
+}
+
+.user-container{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Righteous',sans-serif;
+    margin:2rem;
+}
+
+.left-nav, .center-container{
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+    height:100%;
+    background:#fff;
+    background:linear-gradient(180deg, rgba(255,255,255,0.875) 0%, rgba(255,255,255,0.9325) 50%, rgba(255,255,255,0.875) 100%);
+}
+
+.left-nav{
+    padding:1rem;
+}
+
+.left-nav div{
+    margin:0.5rem;
+    padding-bottom:0.25rem;
+    border-bottom:1px solid #11d66a;
+}
+
+.left-nav-link{
+    color:#020f07;
+    transition:0.2s ease-out color;
+}
+
+.left-nav-link:hover{
+    color:rgba(17, 214, 106, 0.933);
+}
+
+.center-container{
+    width:50rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:1rem;
+}
+
+.center-container h2{
+    text-align:center;
+    font-size:1.75rem;
+}
+
+.daily-progress-form{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    width:100%;
+}
+
+.date{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin:1rem 0;
+}
+
+.meal{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    display:flex;
+    padding:1rem;
+    height:100%;
+}
+
+.date label, .meal label{
+    font-size:1.5rem;
+    margin:0.5rem;
+}
+
+.meal-input{
+    background:#11d66a;
+    font-size:0.875rem;
+    font-family:'Roboto',sans-serif;
+    width:100%;
+    max-width:20rem;
+    padding:0.5rem;
+    border:0;
+    transition:0.2 ease-out all;
+}
+
+.date-input{
+    border:0;
+    background:#11d66a;
+    transition:0.2 ease-out all;
+}
+
+.meal-input:hover, .date-input:hover{
+    background:#13d168;
+}
+
+::-webkit-datetime-edit{
+    padding:0.375rem 6rem;
+    font-family:'Roboto',sans-serif;
+    font-size:0.875rem;
+}
+
+::-webkit-datetime-edit-fields-wrapper{
+    margin-left:2rem;
+}
+
+.right-information{
+    background-color:#FFFC00;
+    color:#020f07;
+    height:100%;
+    box-shadow:1px 1px 6px rgba(2, 15, 7, 0.502);
+    width:15rem;
+}
+
+.text-info{
+    margin:0.5rem auto;
+    text-align:center;
+}
+
+.title-text{
+    margin:0 auto;
+    width:70%;
+    font-size:1.25rem;
+    padding-bottom:0.5rem;
+    border-bottom:1px solid #020f07;
+}
+
+.number-text{
+    font-size:1.5rem;
+    padding:0.375rem 0;
+}
+
+.submit-meal-button{
+    background:#020f07;
+    color:#fff;
+    margin-top:0.25rem;
+    padding:0.25rem 1rem;
+    border:0;
+    border-radius:2px;
+    font-family:'Roboto',sans-serif;
+    font-size:1.25rem;
+    transition:0.2s ease-out all;
+}
+
+.submit-meal-button:hover{
+    background:#11d66a;
+    color:#020f07;
+}
