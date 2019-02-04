@@ -14,11 +14,16 @@ const bcrypt = require('bcrypt-nodejs');
 router.get('/', (req, res, next)=>{
     let msg;
     if(req.query.msg == 'noUser'){
+        title = 'Error';
         msg = 'This email is not registered in our system. Please try again.'
     }else if(req.query.msg == 'badPass'){
-        msg = 'The password you have typed is incorrect. Please try again (and be wary of capitalization).'
+        title = 'Error';
+        msg = 'The password you have typed is incorrect. Please try again (and be wary of capitalization).';
+    }else if(req.query.msg == 'register'){
+        title = 'Registration Success';
+        msg = 'You have been successfully registered. You can now log-in below.';
     }
-	res.render('login',{msg});
+	res.render('login',{title, msg});
 });
 
 // Return Login
