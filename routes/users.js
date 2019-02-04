@@ -102,7 +102,7 @@ router.get('/', function(req, res, next) {
     }
   }else{
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
-    if(startWeight>weight){
+    if(startWeight>=weight){
       gainLose = "lose"
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
     }else{
