@@ -92,19 +92,23 @@ router.get('/', function(req, res, next) {
 router.get("/weeklyProgress", (req,res,next)=>{
   let userDates = [];
   let userWeightProgress = [];
+  let userCalories = [];
   const userProgressQuery = `SELECT date, dailyWeight, userId FROM userProgress
   ORDER BY date
-  LIKE userId = ?;`
+  LIKE userId = ?
+  LIMIT 7;`
   connection.query(userProgressQuery,[req.session.id],(error, results)=>{
     if(error){throw error};
     let userInformationArray = results;
     for(let i = 0; i < userInformationArray.length; i++){
       userDates.push(userInformationArray[i].date);
       userWeightProgress.push(userInformationArray[i].dailyWeight)
+      userCalories.push(userInformationArray[i].calories);
     }
     let data = {
       userDates : userDates,
-      userWeightProgress: userWeightProgress
+      userWeightProgress: userWeightProgress,
+      userCalories: userCalories
     };
 
     res.render("weeklyProgress", {data});

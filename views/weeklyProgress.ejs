@@ -49,7 +49,7 @@
         let dataFromNode = <%-JSON.stringify(data)%>;
         console.log(dataFromNode);
         let dates = dataFromNode.userDates
-        const formattedDates = dates.map((date)=>{
+        let formattedDates = dates.map((date)=>{
             return date.slice(0,10);
         });
         console.log(formattedDates);
@@ -59,7 +59,7 @@
             data: {
                 labels: formattedDates,
                 datasets: [{
-                    label: 'Calories Consumed',
+                    label: 'Daily Weight',
                     data: dataFromNode.userWeightProgress,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
