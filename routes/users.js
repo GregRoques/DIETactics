@@ -9,8 +9,11 @@ const connection = mysql.createConnection(config.db);
 connection.connect();
 
 let totalCalories = 0;
+let publishDate
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
+
+
 
 
 router.post("/dailyProgress", (req,res,next)=>{
@@ -21,6 +24,11 @@ router.post("/dailyProgress", (req,res,next)=>{
   const other = req.body.other;
   const id = req.session.uid;
   const dailyWeight = req.body.dailyWeight;
+
+  dateArray = date.split('-')
+  dateYear = dateArray.shift()
+  formattedArray = (dateArray.push(dateYear)).shift()
+
 
   const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
   const headers = {
@@ -53,7 +61,7 @@ router.post("/dailyProgress", (req,res,next)=>{
                 if(error){throw error};
               });
             } else {
-              const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userID)
+              const insertUserQuery = `INSERT INTO userProgress (dailyWeight,date,calories,userId)
               VALUES
               (?,?,?,?);`;
               connection.query(insertUserQuery,[dailyWeight,date,totalCalories,id],(error, results)=>{
@@ -71,40 +79,67 @@ router.get('/', function(req, res, next) {
 
   const sex = req.session.sex;
   const age = req.session.age;
+  const startWeight = req.session.startingWeight;
   const weight = req.session.targetWeight;
   const height = req.session.height;
+
+  const currDate = new Date()
+  let currMon= currDate.getMonth()+1
+  let currDay= currDate.getDate()
+  let currYear = currDate.getFullYear()
+  publishdate = `${currMon}-${currDay}-${currYear}`
  
   // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
   let userCal
+  let calGoal
+  let gainLose
   let dailyCal = (Math.round(totalCalories)).toString();
   if (sex == 'male'){
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
+    if(startWeight>weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
   }else{
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
+    if(startWeight>weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
   }
   // console.log('Harris-Benedict User Calorie Count')
   // console.log(userCal)
 
-  res.render("dailyInput", {userCal, dailyCal});
+  res.render("dailyInput", {publishDate, userCal, calGoal, gainLose, dailyCal});
 });
 
 
 router.get("/weeklyProgress", (req,res,next)=>{
   let userDates = [];
   let userWeightProgress = [];
-  const userProgressQuery = `SELECT date, dailyWeight, userId FROM userProgress
-  ORDER BY date
-  LIKE userId = ?;`
-  connection.query(userProgressQuery,[req.session.id],(error, results)=>{
+  let userCalories = [];
+  const userProgressQuery = `SELECT * FROM userProgress WHERE userId = ?
+  ORDER BY date DESC
+  LIMIT 7;`
+  console.log(req.session);
+  connection.query(userProgressQuery,[req.session.uid],(error, results)=>{
     if(error){throw error};
     let userInformationArray = results;
     for(let i = 0; i < userInformationArray.length; i++){
       userDates.push(userInformationArray[i].date);
       userWeightProgress.push(userInformationArray[i].dailyWeight)
+      userCalories.push(userInformationArray[i].calories);
     }
     let data = {
       userDates : userDates,
-      userWeightProgress: userWeightProgress
+      userWeightProgress: userWeightProgress,
+      userCalories: userCalories
     };
 
     res.render("weeklyProgress", {data});

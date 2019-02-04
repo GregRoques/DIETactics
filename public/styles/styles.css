@@ -168,6 +168,7 @@ body{
 .error-box h1{
     font-family:'Righteous',sans-serif;
     font-size:4rem;
+    text-align:center;
 }
 
 p.error-msg{
@@ -175,10 +176,4 @@ p.error-msg{
     font-family:'Roboto',sans-serif;
     font-size:1.25rem;
     text-align:center;
-}
-
-/* weekly progress */
-
-.graph-container {
-    width: 600px;
 }

@@ -47,20 +47,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script type="text/javascript">
         let dataFromNode = <%-JSON.stringify(data)%>;
-        console.log(dataFromNode);
+        // console.log(dataFromNode);
         let dates = dataFromNode.userDates
-        const formattedDates = dates.map((date)=>{
+        let formattedDates = dates.map((date)=>{
             return date.slice(0,10);
         });
-        console.log(formattedDates);
+        // console.log(formattedDates);
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: formattedDates,
+                labels: formattedDates.reverse(),
                 datasets: [{
-                    label: 'Calories Consumed',
-                    data: dataFromNode.userWeightProgress,
+                    label: 'Daily Weight',
+                    data: dataFromNode.userWeightProgress.reverse(),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

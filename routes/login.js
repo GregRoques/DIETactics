@@ -22,6 +22,9 @@ router.get('/', (req, res, next)=>{
     }else if(req.query.msg == 'register'){
         title = 'Registration Success';
         msg = 'You have been successfully registered. You can now log-in below.';
+    }else if(req.query.msg == 'loggedOut'){
+        title = 'Logged Out';
+        msg = 'You have been successfully logged out. Have a nice day!';
     }
 	res.render('login',{title, msg});
 });
@@ -68,7 +71,7 @@ router.post('/loginProcess',(req, res, next)=>{
 
 router.get("/logout", (req,res,next)=>{
     req.session.destroy();
-    res.redirect('/?msg=loggedOut')
+    res.redirect('/login?msg=loggedOut')
 });
 
 module.exports = router;
