@@ -53,7 +53,7 @@ router.post("/userProfileCreation", (req,res,next)=>{
     const firstName = req.body.firstName;
     const age = req.body.age;
     const sex = req.body.sex;
-  
+    console.log(req.body.hello);
   // change height from inches to cm for purpose of db/api usage
     let heightFeet = parseInt(req.body.heightFeet);
     let heightInches = parseInt(req.body.heightInches);
