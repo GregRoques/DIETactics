@@ -26,6 +26,11 @@ let hashPass;
 let email;
 const passwordRegex = new RegExp("^.{8,}$");
 
+
+router.get("/registerProcess", (req,res,next)=>{
+    res.redirect("/register");
+})
+
 // Return Registration
 router.post('/registerProcess',(req, res, next)=>{
     const checkUserQuery = `SELECT * FROM userProfileInfo WHERE email = ?;`;
@@ -50,7 +55,11 @@ router.get("/profileCreation", (req,res,next)=>{
         msg ='You must fill out all fields.'
     }
     res.render("profileCreation", {msg});
-  })
+  });
+
+router.get("/userProfileCreation", (req,res,next)=>{
+    res.render("/register");
+});
   
 router.post("/userProfileCreation", (req,res,next)=>{
     const firstName = req.body.firstName;
