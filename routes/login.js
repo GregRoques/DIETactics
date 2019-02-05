@@ -71,9 +71,11 @@ router.post('/loginProcess',(req, res, next)=>{
                 connection.query(selectUserQuery,(error, results)=>{
                     if(error){throw error};
                     if(results.length > 0){
-                    res.redirect("/users/weeklyProgress");
+                        res.redirect("/users/weeklyProgress");
                     } else {
-                    res.redirect('/users');
+                        console.log("================================")
+
+                        res.redirect('/users');
                     }
                 });
             }
