@@ -104,7 +104,7 @@ router.get('/', function(req, res, next) {
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
   }
-  res.render("dailyInput", {publishDate, userCal, calGoal, gainLose, dailyCal})
+  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal})
 });
 
 router.get("/weeklyProgress", (req,res,next)=>{
