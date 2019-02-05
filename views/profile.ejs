@@ -31,7 +31,7 @@
             <label for="firstName">First Name</label>
             <input type="text" class="text-input" name="firstName" value="<%= data.firstName %>"/>
             <label for="age">Age</label>
-            <input type="text" class="text-input" name="age" value="<%= data.age %>">
+            <input type="number" class="text-input" name="age" value="<%= data.age %>">
             <label for="sex">Sex</label>
             <select class="button-input" name="sex">
                 <option id="male" value="male" <%= (data.sex=='male')?'selected':'' %>>Male</option>
@@ -68,9 +68,9 @@
                 </select>
             </div>
             <label for="startingWeight">Starting Weight</label>
-            <input type="text" class="text-input" name="startingWeight" value="<%= data.startingWeight %>"/>
+            <input type="number" class="text-input" name="startingWeight" value="<%= data.startingWeight %>"/>
             <label for="targetWeight">Target Weight</label>
-            <input type="text" class="text-input" name="targetWeight" value="<%= data.targetWeight %>"/>
+            <input type="number" class="text-input" name="targetWeight" value="<%= data.targetWeight %>"/>
             <label class="pw-label" for="passWord">Please enter your password below to verify your changes.</label>
             <input type="password" class="text-input" name="passWord"/>
             <input class="btn-input" type="submit" value="Edit Profile"/>
