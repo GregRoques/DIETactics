@@ -56,15 +56,15 @@ router.post("/userProfileCreation", (req,res,next)=>{
     const firstName = req.body.firstName;
     const age = req.body.age;
     const sex = req.body.sex;
-    console.log(req.body.hello);
-  // change height from inches to cm for purpose of db/api usage
+    // console.log(req.body.hello);
+    // change height from inches to cm for purpose of db/api usage
     let heightFeet = parseInt(req.body.heightFeet);
     let heightInches = parseInt(req.body.heightInches);
     let heightTotalInches = (heightFeet * 12) + heightInches;
   
     const heightTotalCm = heightTotalInches * 2.54;
   
-  // change weight from pounds to kilograms
+    // change weight from pounds to kilograms
     let startingWeightLb = parseInt(req.body.startingWeight);
     const startingWeightKg = startingWeightLb * 0.453592;
     // console.log(startingWeightKg);
