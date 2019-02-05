@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
   const startWeight = req.session.startingWeight;
   const weight = req.session.targetWeight;
   const height = req.session.height;
+  const userName = req.session.firstName;
  
   // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
   let userCal
@@ -49,7 +50,7 @@ router.get('/', function(req, res, next) {
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
   }
-  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal})
+  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal, userName})
 });
 
 router.get("/dailyProgress",(req,res,next)=>{
