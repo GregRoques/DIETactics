@@ -8,13 +8,13 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
 connection.connect();
 
-let msg;
 let totalCalories = 0;
 const currDate = new Date()
 let currMon= currDate.getMonth()+1
 let currDay= currDate.getDate()
 let currYear = currDate.getFullYear()
 let publishDate = `${currYear}-${currMon}-${currDay}`
+const inputDateMax = `${currYear}-${currMon}-${currDay}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
@@ -106,8 +106,11 @@ router.get('/', function(req, res, next) {
       gainLose = "gain"
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
+    res.render("dailyInput", {inputDateMax, publishDate, userCal, calGoal, gainLose, dailyCal})
+  console.log(inputDateMax)
   }
-
+});
+  router.get("/weeklyProgress",(req,res,next)=>{
   let userDates = [];
   let userWeightProgress = [];
   let userCalories = [];
@@ -123,17 +126,14 @@ router.get('/', function(req, res, next) {
       userWeightProgress.push(userInformationArray[i].dailyWeight)
       userCalories.push(userInformationArray[i].calories);
     }
-    // console.log(userCalories);
-    let averageCalories = Math.round((userCalories.reduce((a,b)=>a+b,0))/(userCalories.length));
-    // console.log(averageCalories);
     let data = {
       userDates : userDates,
       userWeightProgress: userWeightProgress,
-      // userCalories: userCalories
+      userCalories: userCalories
     };
 
-    res.render("weeklyProgress", {data, averageCalories, publishDate, userCal, calGoal, gainLose, dailyCal});
-  });
+    res.render("weeklyProgress", {data, publishDate, userCal, calGoal, gainLose, dailyCal});
+  })
 });
 
 router.get("/profile",(req,res,next)=>{
@@ -156,12 +156,7 @@ router.get("/profile",(req,res,next)=>{
     }
     heightFeet = heightFeet/12;
 
-    if(msg == 'badName'){
-      msg = "You put in a type of character that isn't a letter in a place where only letters are allowed. Please re-type your submission to fit our requirements.";
-    } else if(msg == 'badNum'){
-      msg = "You put in a type of character that isn't a number in a place where only numbers are allowed. Please re-type your submission to fit our requirements.";
-    }
-
+    let msg;
     res.render('profile',{
       data : {
         firstName: results[0].firstName,
@@ -178,12 +173,8 @@ router.get("/profile",(req,res,next)=>{
 });
 
 router.post('/profile/profileEdit',(req,res,next)=>{
-  // Reg-Ex
-  const nameReg =  new RegExp(/^[a-zA-Z]+$/);
-  const numReg = new RegExp(/^\d+$/);
-
   // Name, Age, Sex, Id
-  const editFirstName = req.body.firstName.toString(); console.log(editFirstName);
+  const editFirstName = req.body.firstName;
   const editAge = req.body.age;
   const editSex = req.body.sex;
   const userId = req.session.uid;
@@ -212,20 +203,10 @@ router.post('/profile/profileEdit',(req,res,next)=>{
 
     const passwordsMatch = bcrypt.compareSync(passWord,results[0].hash)
     if(passwordsMatch){
-      if(!nameReg.test(editFirstName) || !numReg.test(editAge) || !numReg.test(editStartWeightKg) || !numReg.test(editTargetWeightKg)){
-        if(!nameReg.test(editFirstName)){
-          msg = "badName";
-          res.redirect(`/users/profile?msg=${msg}`);
-        } else {
-          msg = "badNum";
-          res.redirect(`/users/profile?msg=${msg}`);
-        }
-      } else {
-        connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
-          if(err_2){throw err_2};
-          res.redirect('/users');
-        })
-      }
+      connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
+        if(err_2){throw err_2};
+      })
+      res.redirect('/users');
     }
     else{
       res.redirect('profile?msg=badPass');
