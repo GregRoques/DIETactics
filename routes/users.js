@@ -8,6 +8,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection(config.db);
 connection.connect();
 
+let msg;
 let totalCalories = 0;
 const currDate = new Date()
 let currMon= currDate.getMonth()+1
@@ -197,7 +198,12 @@ router.get("/profile",(req,res,next)=>{
     }
     heightFeet = heightFeet/12;
 
-    let msg;
+    if(msg == 'badName'){
+      msg = "You put in a type of character that isn't a letter in a place where only letters are allowed. Please re-type your submission to fit our requirements.";
+    } else if(msg == 'badNum'){
+      msg = "You put in a type of character that isn't a number in a place where only numbers are allowed. Please re-type your submission to fit our requirements.";
+    }
+
     res.render('profile',{
       data : {
         firstName: results[0].firstName,
@@ -214,8 +220,12 @@ router.get("/profile",(req,res,next)=>{
 });
 
 router.post('/profile/profileEdit',(req,res,next)=>{
+  // Reg-Ex
+  const nameReg =  new RegExp(/^[a-zA-Z]+$/);
+  const numReg = new RegExp(/^\d+$/);
+
   // Name, Age, Sex, Id
-  const editFirstName = req.body.firstName;
+  const editFirstName = req.body.firstName.toString(); console.log(editFirstName);
   const editAge = req.body.age;
   const editSex = req.body.sex;
   const userId = req.session.uid;
@@ -244,10 +254,20 @@ router.post('/profile/profileEdit',(req,res,next)=>{
 
     const passwordsMatch = bcrypt.compareSync(passWord,results[0].hash)
     if(passwordsMatch){
-      connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
-        if(err_2){throw err_2};
-      })
-      res.redirect('/users');
+      if(!nameReg.test(editFirstName) || !numReg.test(editAge) || !numReg.test(editStartWeightKg) || !numReg.test(editTargetWeightKg)){
+        if(!nameReg.test(editFirstName)){
+          msg = "badName";
+          res.redirect(`/users/profile?msg=${msg}`);
+        } else {
+          msg = "badNum";
+          res.redirect(`/users/profile?msg=${msg}`);
+        }
+      } else {
+        connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
+          if(err_2){throw err_2};
+          res.redirect('/users');
+        })
+      }
     }
     else{
       res.redirect('profile?msg=badPass');
