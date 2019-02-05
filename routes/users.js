@@ -166,13 +166,14 @@ router.get("/weeklyProgress", (req,res,next)=>{
       userWeightProgress.push(userInformationArray[i].dailyWeight)
       userCalories.push(userInformationArray[i].calories);
     }
+    let averageCalories = Math.round((userCalories.reduce((a,b)=>a+b,0))/(userCalories.length));
     let data = {
       userDates : userDates,
       userWeightProgress: userWeightProgress,
       userCalories: userCalories
     };
 
-    res.render("weeklyProgress", {data, publishDate, userCal, calGoal, gainLose, dailyCal});
+    res.render("weeklyProgress", {data, averageCalories, publishDate, userCal, calGoal, gainLose, dailyCal});
   });
 });
 
