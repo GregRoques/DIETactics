@@ -10,8 +10,9 @@ connection.connect();
 
 let totalCalories = 0;
 const currDate = (new Date()).toISOString().slice(0,10)
-let publishDate = currDate.replace(/-0+/g, '-');
-
+const currYear = currDate.slice(0,4)
+const currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+let publishDate = `${currMonDay}-${currYear}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
@@ -24,7 +25,9 @@ router.post("/dailyProgress", (req,res,next)=>{
   const id = req.session.uid;
   const dailyWeight = req.body.dailyWeight;
 
-  publishDate = date.replace(/-0+/g, '-');
+  let dateYear = date.slice(0,4)
+  let dateMonDay = (date.slice(6,10)).replace(/-0+/g, '-');
+  publishDate = `${dateMonDay}-${dateYear}`
 
 
   const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
