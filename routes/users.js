@@ -50,7 +50,11 @@ router.get('/', function(req, res, next) {
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
   }
-  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal, userName})
+  if(!req.session.loggedIn){
+    res.redirect("/login");
+  } else {
+    res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal, userName})
+  }
 });
 
 router.get("/dailyProgress",(req,res,next)=>{
