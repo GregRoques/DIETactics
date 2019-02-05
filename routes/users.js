@@ -219,7 +219,7 @@ router.get("/profile/profileEdit", (req,res,next)=>{
 router.post('/profile/profileEdit',(req,res,next)=>{
   // Reg-Ex
   const nameReg =  new RegExp(/^[a-zA-Z]+$/);
-  const numReg = new RegExp(/^\d+$/);
+  const numReg = new RegExp(/^\d+.*\d+$/);
 
   // Name, Age, Sex, Id
   const editFirstName = req.body.firstName;
@@ -257,6 +257,8 @@ router.post('/profile/profileEdit',(req,res,next)=>{
           res.redirect(`/users/profile?msg=${msg}`);
         } else {
           msg = "badNum";
+          console.log(numReg.test(editAge))
+          console.log(numReg.test(editStartWeightKg)); 
           res.redirect(`/users/profile?msg=${msg}`);
         }
       } else {
