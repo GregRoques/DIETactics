@@ -21,6 +21,18 @@
     }
 }
 
+@media screen and (max-width:650px){
+    .edit-page-container{
+        flex-direction:column;
+        justify-content: center;
+    }
+
+    .edit-profile-form{
+        width:auto;
+        margin:2rem auto 3rem;
+    }
+}
+
 @media screen and (max-width:700px){
     .video-content h1, .register-header h1, .login-header h1, .profile-header h1, .user-header h1, .weekly-progress-header h1{font-size:5rem;}
     .footer{
@@ -90,6 +102,10 @@
     .user-container{
         margin-bottom:5rem;
     }
+
+    .edit-profile-form{
+        width:30rem;
+    }
 }
 
 @media screen and (max-width:1000px){
@@ -100,10 +116,20 @@
     .graph-container{
         width:28rem;
     }
+
+    .edit-profile-form{
+        width:40rem;
+    }
 }
 
 @media screen and (max-width:1360px){
     .center-container{
         width:28rem;
+    }
+}
+
+@media screen and (min-width:1360px) and (max-width:1500px){
+    .edit-profile-form{
+        width:60rem;
     }
 }
