@@ -104,7 +104,7 @@ router.get('/', function(req, res, next) {
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
   }
-  res.render("dailyInput", {inputDateMax, publishDate, userCal, calGoal, gainLose, dailyCal})
+  res.render("dailyInput", {publishDate, userCal, calGoal, gainLose, dailyCal})
 });
 
 router.get("/weeklyProgress", (req,res,next)=>{
@@ -169,33 +169,6 @@ router.get("/weeklyProgress", (req,res,next)=>{
     res.render("weeklyProgress", {data, publishDate, userCal, calGoal, gainLose, dailyCal});
   });
 });
-
-/* router.get("/weeklyProgress",(req,res,next)=>{
-  let userDates = [];
-  let userWeightProgress = [];
-  let userCalories = [];
-  const userProgressQuery = `SELECT * FROM userProgress WHERE userId = ?
-  ORDER BY date DESC
-  LIMIT 7;`
-  console.log(req.session);
-  connection.query(userProgressQuery,[req.session.uid],(error, results)=>{
-    if(error){throw error};
-    let userInformationArray = results;
-    for(let i = 0; i < userInformationArray.length; i++){
-      userDates.push(userInformationArray[i].date);
-      userWeightProgress.push(userInformationArray[i].dailyWeight)
-      userCalories.push(userInformationArray[i].calories);
-    }
-    let averageCalories = Math.round((userCalories.reduce((a,b)=>a+b,0))/(userCalories.length));
-    let data = {
-      userDates : userDates,
-      userWeightProgress: userWeightProgress,
-      userCalories: userCalories
-    };
-
-    res.render("weeklyProgress", {data, averageCalories, publishDate, userCal, calGoal, gainLose, dailyCal});
-  })
-}); */
 
 router.get("/profile",(req,res,next)=>{
   const userId = req.session.uid;
