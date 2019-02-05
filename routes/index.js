@@ -17,7 +17,11 @@ const helmet = require('helmet');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {});
+  if(req.session.loggedIn){
+    res.redirect("/users");
+  } else {
+    res.render('index', {});
+  }
 });
 
 module.exports = router;
