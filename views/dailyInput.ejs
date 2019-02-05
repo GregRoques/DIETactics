@@ -32,11 +32,11 @@
                 <form action="/users/dailyProgress" method="post" class="daily-progress-form">
                     <div class="date">
                         <label for="date">Date</label>
-                        <input type="date" class="date-input" name="date">
+                        <input type="date" max="<%= publishDate%>" class="date-input" name="date">
                     </div>
                     <div class="meal">
                         <label for="breakfast">Daily Weight</label>
-                        <input type="text" class="meal-input" name="dailyWeight" placeholder="Enter your weight as of today.">
+                        <input type="number" min="2" max="4" class="meal-input" name="dailyWeight" placeholder="Enter your weight as of today.">
                     </div>
                     <div class="meal">
                         <label for="breakfast">Breakfast</label>

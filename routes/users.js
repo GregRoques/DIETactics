@@ -27,7 +27,8 @@ router.post("/dailyProgress", (req,res,next)=>{
   const id = req.session.uid;
   const dailyWeight = req.body.dailyWeight;
 
-  publishDate = date.replace(/-0+/g, '-')
+  publishDate = date.replace(/-0+/g, '-');
+
 
   const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
   const headers = {
@@ -87,7 +88,6 @@ router.get('/', function(req, res, next) {
   let calGoal
   let gainLose
   let dailyCal = (Math.round(totalCalories)).toString();
-  
   if (sex == 'male'){
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
     if(startWeight>weight){
@@ -100,48 +100,6 @@ router.get('/', function(req, res, next) {
   }else{
     userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
     if(startWeight>=weight){
-      gainLose = "lose"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
-    }else{
-      gainLose = "gain"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
-    }
-  }
-  // console.log('Harris-Benedict User Calorie Count')
-  // console.log(userCal)
-  res.render("dailyInput", {publishDate, userCal, calGoal, gainLose, dailyCal});
-});
-
-router.get("/weeklyProgress", (req,res,next)=>{
-  const sex = req.session.sex;
-  const age = req.session.age;
-  const startWeight = req.session.startingWeight;
-  const weight = req.session.targetWeight;
-  const height = req.session.height;
-
-  const currDate = new Date()
-  let currMon= currDate.getMonth()+1
-  let currDay= currDate.getDate()
-  let currYear = currDate.getFullYear()
-  let publishDate = `${currMon}-${currDay}-${currYear}`
- 
-  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
-  let userCal
-  let calGoal
-  let gainLose
-  let dailyCal = (Math.round(totalCalories)).toString();
-  if (sex == 'male'){
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
-    if(startWeight>weight){
-      gainLose = "lose"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
-    }else{
-      gainLose = "gain"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
-    }
-  }else{
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
-    if(startWeight>weight){
       gainLose = "lose"
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
     }else{

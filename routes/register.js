@@ -88,7 +88,7 @@ router.post("/userProfileCreation", (req,res,next)=>{
     });
 }
     
-  });
+});
 
 
 module.exports = router;
