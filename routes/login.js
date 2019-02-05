@@ -29,6 +29,10 @@ router.get('/', (req, res, next)=>{
 	res.render('login',{title, msg});
 });
 
+router.get("/loginProcess", (req,res, next)=>{
+    res.redirect("/login");
+});
+
 // Return Login
 router.post('/loginProcess',(req, res, next)=>{
     const email =  req.body.email;
@@ -36,8 +40,7 @@ router.post('/loginProcess',(req, res, next)=>{
 
     const checkPasswordQuery = `SELECT * FROM userProfileInfo WHERE email = ?`;
     connection.query(checkPasswordQuery,[email],(error, results)=>{
-         
-        if(error){throw error;}
+        if(error){throw error}
         if(results.length == 0 ){
             res.redirect('/login?msg=noUser');
         }else{

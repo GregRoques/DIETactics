@@ -16,6 +16,46 @@ let publishDate = `${currMonDay}-${currYear}`
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+
+  const sex = req.session.sex;
+  const age = req.session.age;
+  const startWeight = req.session.startingWeight;
+  const weight = req.session.targetWeight;
+  const height = req.session.height;
+ 
+  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
+  let userCal
+  let calGoal
+  let gainLose
+  let dailyCal = (Math.round(totalCalories)).toString();
+  if (sex == 'male'){
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
+    if(startWeight>weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
+  }else{
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
+    if(startWeight>=weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
+  }
+  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal})
+});
+
+router.get("/dailyProgress",(req,res,next)=>{
+  res.redirect("/users");
+})
+
 router.post("/dailyProgress", (req,res,next)=>{
   const date = req.body.date;
   const breakfast = req.body.breakfast;
@@ -71,44 +111,7 @@ router.post("/dailyProgress", (req,res,next)=>{
     });
     res.redirect('/users')
   });
-
 })
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-
-  const sex = req.session.sex;
-  const age = req.session.age;
-  const startWeight = req.session.startingWeight;
-  const weight = req.session.targetWeight;
-  const height = req.session.height;
- 
-  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
-  let userCal
-  let calGoal
-  let gainLose
-  let dailyCal = (Math.round(totalCalories)).toString();
-  if (sex == 'male'){
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
-    if(startWeight>weight){
-      gainLose = "lose"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
-    }else{
-      gainLose = "gain"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
-    }
-  }else{
-    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
-    if(startWeight>=weight){
-      gainLose = "lose"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
-    }else{
-      gainLose = "gain"
-      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
-    }
-  }
-  res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal})
-});
 
 router.get("/weeklyProgress", (req,res,next)=>{
   const sex = req.session.sex;
@@ -208,6 +211,10 @@ router.get("/profile",(req,res,next)=>{
     });
   });
 });
+
+router.get("/profile/profileEdit", (req,res,next)=>{
+  res.redirect("/users/profile")
+})
 
 router.post('/profile/profileEdit',(req,res,next)=>{
   // Reg-Ex
