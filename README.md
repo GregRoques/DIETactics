@@ -12,7 +12,8 @@
 This project is a Node/Express-based application that allows users to create diet plans based on their input (current weight, height, target weight, and activity level). Users can log into their profile and view/update the progress on their current diet.
 
 ### Features
-* To be declared...
+* Calculates recommended daily caloric intake for maintaining weight and for losing 1 pound per week.
+* Creates a chart for the user that shows their caloric intake during the past week (7 days).
 
 ## Technologies
 * HTML/CSS/JavaScript
@@ -43,7 +44,9 @@ This project is a Node/Express-based application that allows users to create die
 
 ## Stretch Goals
 * Create section for administrative users (i.e. certified dieticians)
+    * Status: Incomplete
 * Provide detailed reports on progress measuring from starting weight to target weight
+    * Status: Incomplete
 
 ## Authors
 * Sean McQuaid
