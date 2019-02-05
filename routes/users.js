@@ -110,7 +110,71 @@ router.get('/', function(req, res, next) {
   console.log(inputDateMax)
   }
 });
-  router.get("/weeklyProgress",(req,res,next)=>{
+
+router.get("/weeklyProgress", (req,res,next)=>{
+  const sex = req.session.sex;
+  const age = req.session.age;
+  const startWeight = req.session.startingWeight;
+  const weight = req.session.targetWeight;
+  const height = req.session.height;
+
+  const currDate = new Date()
+  let currMon= currDate.getMonth()+1
+  let currDay= currDate.getDate()
+  let currYear = currDate.getFullYear()
+  let publishDate = `${currMon}-${currDay}-${currYear}`
+ 
+  // Calculate Cal-per-day-per-user using the Harris–Benedict_equation. Read More here: https://bit.ly/1I9tmyJ;
+  let userCal
+  let calGoal
+  let gainLose
+  let dailyCal = (Math.round(totalCalories)).toString();
+  if (sex == 'male'){
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5)).toString();
+    if(startWeight>weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
+  }else{
+    userCal = (Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161)).toString();
+    if(startWeight>weight){
+      gainLose = "lose"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))-500)).toString();
+    }else{
+      gainLose = "gain"
+      calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
+    }
+  }
+
+  let userDates = [];
+  let userWeightProgress = [];
+  let userCalories = [];
+  const userProgressQuery = `SELECT * FROM userProgress WHERE userId = ?
+  ORDER BY date DESC
+  LIMIT 7;`
+  console.log(req.session);
+  connection.query(userProgressQuery,[req.session.uid],(error, results)=>{
+    if(error){throw error};
+    let userInformationArray = results;
+    for(let i = 0; i < userInformationArray.length; i++){
+      userDates.push(userInformationArray[i].date);
+      userWeightProgress.push(userInformationArray[i].dailyWeight)
+      userCalories.push(userInformationArray[i].calories);
+    }
+    let data = {
+      userDates : userDates,
+      userWeightProgress: userWeightProgress,
+      userCalories: userCalories
+    };
+
+    res.render("weeklyProgress", {data, publishDate, userCal, calGoal, gainLose, dailyCal});
+  });
+});
+
+/* router.get("/weeklyProgress",(req,res,next)=>{
   let userDates = [];
   let userWeightProgress = [];
   let userCalories = [];
@@ -135,7 +199,7 @@ router.get('/', function(req, res, next) {
 
     res.render("weeklyProgress", {data, averageCalories, publishDate, userCal, calGoal, gainLose, dailyCal});
   })
-});
+}); */
 
 router.get("/profile",(req,res,next)=>{
   const userId = req.session.uid;
