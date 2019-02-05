@@ -61,13 +61,9 @@ router.post('/loginProcess',(req, res, next)=>{
 
                 
                 console.log(req.session)
-                const currDate = new Date();
-                let currMon= currDate.getMonth()+1;
-                let currDay= currDate.getDate();
-                let currYear = currDate.getFullYear();
-                let publishDate = `${currYear}-${currMon}-${currDay}`;
+                const currDate = (new Date()).toISOString().slice(0,10)
               
-                const selectUserQuery = `SELECT * from userProgress WHERE date = '${publishDate}' AND userId = '${req.session.uid}';`
+                const selectUserQuery = `SELECT * from userProgress WHERE date = '${currDate}' AND userId = '${req.session.uid}';`
                 connection.query(selectUserQuery,(error, results)=>{
                     if(error){throw error};
                     if(results.length > 0){

@@ -9,12 +9,9 @@ const connection = mysql.createConnection(config.db);
 connection.connect();
 
 let totalCalories = 0;
-const currDate = new Date()
-let currMon= currDate.getMonth()+1
-let currDay= currDate.getDate()
-let currYear = currDate.getFullYear()
-let publishDate = `${currYear}-${currMon}-${currDay}`
-const inputDateMax = `${currYear}-${currMon}-${currDay}`
+const currDate = (new Date()).toISOString().slice(0,10)
+let publishDate = currDate.replace(/-0+/g, '-');
+
 
 const apiBaseUrl = "https://trackapi.nutritionix.com/";
 
@@ -106,7 +103,7 @@ router.get('/', function(req, res, next) {
       gainLose = "gain"
       calGoal = (((Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5))+500)).toString();
     }
-    res.render("dailyInput", {inputDateMax, publishDate, userCal, calGoal, gainLose, dailyCal})
+    res.render("dailyInput", {currDate, publishDate, userCal, calGoal, gainLose, dailyCal})
   console.log(inputDateMax)
   }
 });
