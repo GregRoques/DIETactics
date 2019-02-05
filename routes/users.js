@@ -207,6 +207,10 @@ router.get("/profile",(req,res,next)=>{
 });
 
 router.post('/profile/profileEdit',(req,res,next)=>{
+  // Reg-Ex
+  const nameReg =  new RegExp(/^[a-zA-Z]+$/);
+  const numReg = new RegExp(/^\d+$/);
+
   // Name, Age, Sex, Id
   const editFirstName = req.body.firstName;
   const editAge = req.body.age;
@@ -237,10 +241,20 @@ router.post('/profile/profileEdit',(req,res,next)=>{
 
     const passwordsMatch = bcrypt.compareSync(passWord,results[0].hash)
     if(passwordsMatch){
-      connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
-        if(err_2){throw err_2};
-      })
-      res.redirect('/users');
+      if(!nameReg.test(editFirstName) || !numReg.test(editAge) || !numReg.test(editStartWeightKg) || !numReg.test(editTargetWeightKg)){
+        if(!nameReg.test(editFirstName)){
+          msg = "badName";
+          res.redirect(`/users/profile?msg=${msg}`);
+        } else {
+          msg = "badNum";
+          res.redirect(`/users/profile?msg=${msg}`);
+        }
+      } else {
+        connection.query(editUserQuery,[editFirstName,editAge,editSex,editHeighTotalCm,editStartWeightKg,editTargetWeightKg,userId],(err_2,results)=>{
+          if(err_2){throw err_2};
+          res.redirect('/users');
+        })
+      }
     }
     else{
       res.redirect('profile?msg=badPass');
