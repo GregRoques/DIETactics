@@ -59,33 +59,21 @@ router.post('/loginProcess',(req, res, next)=>{
                 req.session.targetWeight = results[0].targetWeight
                 req.session.loggedIn = true;
 
-                // console.log(req.session)
-
-                const selectQuery = `SELECT * FROM userProgress WHERE userId = ?
-                ORDER BY date DESC
-                LIMIT 7;`
-                connection.query(selectQuery,[req.session.uid],(error2,results2)=>{
-                    const currDate = new Date();
-                    let currMon= currDate.getMonth()+1;
-                    let currDay= currDate.getDate();
-                    let currYear = currDate.getFullYear();
-                    let publishDate = `${currYear}-${currMon}-${currDay}`;
-                    // console.log(results2);
-                    let datesFromDb = [];
-
-                    for(let i = 0; i < results2.length; i++){
-                        let resultDate = results2[i].date
-                        let resultMon= resultDate.getMonth()+1;
-                        let resultDay= resultDate.getDate();
-                        let resultYear = resultDate.getFullYear();
-                        let formattedDateFromDb = `${resultYear}-${resultMon}-${resultDay}`;
-                        datesFromDb.push(formattedDateFromDb);
-                    }
-                    console.log(datesFromDb);
-                        if(datesFromDb[0] == publishDate){
-                        res.redirect("/users/weeklyProgress");
-                        } else {
-                        res.redirect('/users');
+                
+                console.log(req.session)
+                const currDate = new Date();
+                let currMon= currDate.getMonth()+1;
+                let currDay= currDate.getDate();
+                let currYear = currDate.getFullYear();
+                let publishDate = `${currYear}-${currMon}-${currDay}`;
+              
+                const selectUserQuery = `SELECT * from userProgress WHERE date = '${publishDate}' AND userId = '${req.session.uid}';`
+                connection.query(selectUserQuery,(error, results)=>{
+                    if(error){throw error};
+                    if(results.length > 0){
+                    res.redirect("/users/weeklyProgress");
+                    } else {
+                    res.redirect('/users');
                     }
                 });
             }
