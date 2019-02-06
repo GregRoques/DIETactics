@@ -9,13 +9,17 @@
     * MVP
     * Stretch Goals
     * Authors
+    * Screenshots
 
 ## Description
-This project is a Node/Express-based application that allows users to create diet plans based on their input (current weight, height, target weight, and activity level). Users can log into their profile and view/update the progress on their current diet.
+This project is a Node/Express-based application that allows users to create diet plans based on their input (current weight, height, target weight, etc.). Users can log into their profile and view/update their progress on their current diet.
 
 ### Features
-* Calculates recommended daily caloric intake for maintaining weight and for losing 1 pound per week.
-* Creates a chart for the user that shows their caloric intake during the past week (7 days).
+* Creates a customizable profile for any and all users.
+* Calculates recommended daily caloric intake for maintaining weight and for losing/gaining 1 pound per week based on the user's profile.
+    * Uses the Harris-Benedict equation to make said calculation.
+* Creates a chart for the user that shows their daily weight for the most recent 7 days using Chart.js.
+* Uses the Nutritionix API in order to calculate daily calories based on what input the user provides for each meal.
 
 ## Technologies
 * HTML/CSS/JavaScript
@@ -34,6 +38,72 @@ This project is a Node/Express-based application that allows users to create die
     <option id="male" value="male" <%= (data.sex=='male')?'selected':'' %>>Male</option>
     ...
     <option id="foot-0" value="0" <%= (data.heightFeet==0)?'selected':'' %>>0</option>
+    ```
+* Routing
+    * We had to refactor a number of routes within our forms in order to properly access the necessary POST requests related to each form.
+    * We had also set up a number of redirects for all instances where the user tried to access a URL that existed solely for the sake of a POST request. Instead the site would take them to a GET request to leads them to the page where the initial POST request would originate from.
+    ```
+    // Actual Route
+    router.post('/loginProcess',(req, res, next)=>{
+        // CODE
+    }
+
+    // Substitute Route for GET Request
+    router.get("/loginProcess", (req,res, next)=>{
+        res.redirect("/login");
+    });
+    ```
+* Implementing Nutritionix API
+    * When first implementing the Nutritionix API, we weren't able to find much information within their documentation on how to complete a POST request with the API. After researching the API, we discovered that we needed to provide our own headers that contained the content-Type, app-id, app-key, and remote-user-id. After this was completed, we were able to make calculations based on user input using the API.
+    ```
+    const searchUrl = `${apiBaseUrl}/v2/natural/nutrients/`;
+    const headers = {
+        "content-Type": "application/json", 
+        "x-app-id" :`${config.apiAppId}`, 
+        "x-app-key":`${config.apiKey}`, 
+        "x-remote-user-id":`${config.activeUser}`
+    };
+    ```
+* Implementing Chart.js
+    * The main issue we faced was how to take data from the database on the back-end and translate it into front-end JavaScript to display with Chart.js. We needed to first call the data in a script tag within the .ejs file.
+    ```
+    let dataFromNode = <%-JSON.stringify(data)%>;
+    ```
+    * After the data was parsed through the JSON.stringify() method, we were able to use that data as if it were actually written locally within the script tag. As such, we were able to populate our chart with the data grabbed.
+* Landing Page Styling
+    * We had wanted to have a video displayed on our landing page for a bit more visual excitement. This, however, led to a different HTML setup compared to the other headers on each page, where the text in the header was actually a separate containter from the container with the video inside of it. In order to center this text within the video, we needed to devise a solution in JavaScript that would automatically update the position of the text to fit within the window's center.
+
+    ```
+    let winWid = $(window).width();
+    let eWid = $('.video-content').width();
+    let totalSpace = winWid - eWid;
+    let halfSpace = totalSpace/2;
+    $('.video-content').css('left', halfSpace);
+
+    $(window).resize(()=>{
+        let winWid = $(window).width();
+        let eWid = $('.video-content').width();
+        let totalSpace = winWid - eWid;
+        let halfSpace = totalSpace/2;
+        $('.video-content').css('left', halfSpace);
+    }); 
+    ```
+* Date Issues
+    * We had to take into consideration that dates are read differently between the MySQL database (YYYY-MM-DD) and the HTML document (UTC). We used the toISOString() method to convert a UTC time to (YYYY-MM-DD TIME) Format and slice to take off certain portions for each part of the date needed for the MySQL query. The date is refactored to how the user would normally read a date when displayed in the browser.
+    ```
+    const currDate = (new Date()).toISOString().slice(0,10);
+    const currYear = currDate.slice(0,4);
+    const currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+    let publishDate = `${currMonDay}-${currYear}`;
+
+    router.post("/dailyProgress", (req,res,next)=>{
+        const date = req.body.date;
+        ...
+        let dateYear = date.slice(0,4);
+        let dateMonDay = (date.slice(6,10)).replace(/-0+/g, '-');
+        publishDate = `${dateMonDay}-${dateYear}`;
+        ...
+    }
     ```
 
 ## MVP
