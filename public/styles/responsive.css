@@ -1,5 +1,72 @@
-@media screen and (max-width:500px){
-    .video-content h1{font-size:4rem !important;}
+@media screen and (max-width:320px){
+    .video-box{top:4rem;}
+    .video-content{top:3rem !important;}
+    .video-content h1{font-size:3.25rem !important;}
+    .register-header h1, .login-header h1, .profile-header h1, .user-header h1, .weekly-progress-header h1{
+        font-size:3.25rem !important;
+    }
+    .video-buttons button{
+        padding:0.5rem 1rem;
+    }
+    .landing-box{
+        width:90%;
+    }
+    .landing-content{
+        margin:0 0.75rem !important;
+        padding:0.75rem 0.625rem !important;
+    }
+    .landing-content p{
+        text-indent:1.5rem;
+        font-size:1.125rem !important;
+        padding-bottom:1rem;
+        margin-bottom:1rem;
+    }
+    .register-form, .login-form, .error-box{
+        width:10rem !important;
+    }
+
+    .register-form .text-input, .login-form .text-input{
+        width:auto;
+    }
+
+    .register-form label{
+        font-size:1.25rem !important;
+    }
+
+    .login-form span{
+        text-align:center;
+    }
+    
+    .user-container{
+        flex-direction:column;
+        align-items:center;
+    }
+    .left-nav{
+        width:80%;
+        font-size:1.25rem;
+        text-align:center;
+    }
+    .center-container{
+        width:15rem !important;
+    }
+    .right-information{
+        width:90%;
+    }
+    .number-text{
+        font-size:2rem;
+    }
+    .graph-container{
+        margin:2rem;
+    }
+    ::-webkit-datetime-edit{
+        padding:0.375rem 4.25rem;
+        font-family:'Roboto',sans-serif;
+        font-size:0.875rem;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:500px){
+    .video-content h1{font-size:4rem;}
     .video-buttons button{
         padding:0.5rem 1rem;
     }
@@ -19,6 +86,27 @@
     .register-form, .login-form, .error-box{
         width:auto;
     }
+    .user-container{
+        flex-direction:column;
+        align-items:center;
+    }
+    .left-nav{
+        width:80%;
+        font-size:1.25rem;
+        text-align:center;
+    }
+    .center-container{
+        margin:2rem 0;
+    }
+    .right-information{
+        width:90%;
+    }
+    .number-text{
+        font-size:2rem;
+    }
+    .graph-container{
+        margin:2rem;
+    }
 }
 
 @media screen and (max-width:650px){
@@ -33,7 +121,7 @@
     }
 }
 
-@media screen and (max-width:700px){
+@media screen and (min-width:500px) and (max-width:700px){
     .video-content h1, .register-header h1, .login-header h1, .profile-header h1, .user-header h1, .weekly-progress-header h1{font-size:5rem;}
     .footer{
         font-size:0.875rem;
@@ -108,7 +196,7 @@
     }
 }
 
-@media screen and (max-width:1000px){
+@media screen and (min-width:320px) and (max-width:1000px){
     .video-content{top:35%;}
 }
 
