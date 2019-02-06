@@ -1,4 +1,6 @@
 # DIETactics
+![Main Page](./readme/main.png)
+
 ## Contents
     * Description
     * Features
@@ -61,3 +63,28 @@ This project is a Node/Express-based application that allows users to create die
     * Contributions:
         * Concept, Wireframing, Front End Development, Responsive Design, Login/Logout Functionality, Edit Profile Form & Database Connection, RegEx Validation
     * [GitHub Profile](https://github.com/rubinoAM)
+
+## Screenshots
+* Landing Page
+
+![Landing Page](./readme/landingpage.png)
+
+* Register Page
+
+![Register Page](./readme/register.png)
+
+* Profile Setup Page
+
+![Profile Setup Page](./readme/profilesetup.png)
+
+* Login Page
+
+![Login Page](./readme/login.png)
+
+* Daily Input Form
+
+![Daily Input Form](./readme/dailyinputform.png)
+
+* Weekly Progress Page
+
+![Weekly Progress Page](./readme/weeklyprogress.png)
