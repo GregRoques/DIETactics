@@ -12,7 +12,7 @@
     * Screenshots
 
 ## Description
-This project is a Node/Express-based application that allows users to create diet plans based on their input (current weight, height, target weight, etc.). Users can log into their profile and view/update their progress on their current diet.
+DIETactics is a full stack web application utilizing mySQL, Node.Js, and Express. Users are able to create diet plans based on their input (current weight, height, target weight, etc.). Users can log into their profile and view/update their progress on their current diet.
 
 ### Features
 * Creates a customizable profile for any and all users.
