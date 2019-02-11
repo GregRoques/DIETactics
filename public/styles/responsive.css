@@ -89,6 +89,12 @@
     }
 }
 
+@media screen and (max-width:500px) {
+    .center-container {
+        width: auto;
+    }
+}
+
 @media screen and (min-width:500px) and (max-width:1000px){
     .center-container{
         width:15rem;
@@ -122,7 +128,7 @@
     }
 }
 
-@media screen and (max-width:1360px){
+@media screen and (min-width: 1000px) and (max-width:1360px){
     .center-container{
         width:28rem;
     }
