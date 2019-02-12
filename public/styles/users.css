@@ -121,6 +121,8 @@
     border:0;
     background:#11d66a;
     transition:0.2 ease-out all;
+    width: 100%;
+    max-width: 20rem;
 }
 
 .meal-input:hover, .date-input:hover{
